@@ -1,0 +1,153 @@
+(function() {
+		var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 'ngUploadDialog', 'ngZillow']);
+		
+		mapp.config(function($routeProvider) {
+		    $routeProvider
+		    .when("/datasheet", {
+		        templateUrl : "mockup-datasheet.htm"
+		    })
+		    .when("/messages", {
+		        templateUrl : "green.htm"
+		    })
+		    .when("/upload", {
+		    	templateUrl : "green.htm"
+		    })
+		    .when("/fee-calculator", {
+		        templateUrl : "fee-calculator.htm"
+		    })
+		    .when("/zillow", {
+		    	templateUrl : "mockup-zillow.htm",
+		    	controller: "ZillowController",
+		    	controllerAs: "zillowCtrl"
+		    })
+		    .otherwise({
+		        templateUrl : "mockup-originator-home.htm"
+		    });
+		});
+		
+		mapp.controller('MainController', function($location){
+			this.currentUser = {"name": "Steve Belt", "id": 10010010 };
+			
+			this.isActive = function( viewLocation ){
+                return viewLocation === $location.path();
+			}
+		});
+		
+		mapp.config(function($mdIconProvider) {
+		    $mdIconProvider
+		      .icon("zillow", "/images/zillow_logo.svg", 24);
+		});
+		
+		mapp.directive('header', function(){
+			return {
+				restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+		        replace: true,
+		        scope: { currentuser: '=' }, //@ reads the attribute value, = provides two-way binding, & works with functions
+		        templateUrl: '/pageHeader.htm',
+		      	// controller: rankCntrlr,     //Embed a custom controller in the directive
+		      	// controllerAs: 'nameCntrl',
+		        link: function ($scope, element, attrs) { }
+			};
+		});
+		
+        mapp.directive('datasheet', function(){
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                scope: { currentuser: '=' }, //@ reads the attribute value, = provides two-way binding, & works with functions
+                templateUrl: '/datasheet.html',
+                // controller: rankCntrlr,     //Embed a custom controller in the directive
+                // controllerAs: 'nameCntrl',
+                link: function ($scope, element, attrs) { }
+            };
+        });
+        
+        mapp.directive('datasheetProperty', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-property.html',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+        mapp.directive('datasheetLender', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-lender.html',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+        mapp.directive('datasheetBorrower', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-borrower.html',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+        mapp.directive('datasheetSeller', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-seller.html',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+        mapp.directive('datasheetFinancial', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-financial.html',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+        mapp.directive('datasheetPayoffs', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-payoffs.html',
+                controller: function() {
+	                	this.payoffs = [
+	                		{
+	                			type: 'First Mortgage',
+	                			remitTo: 'Steve B.',
+	                			remitAddress: '22 Main Street, Suite# 203',
+	                			remitCity: 'New York',
+	                			remitState: 'NY',
+	                			remitZipcode: '02202',
+	                			accountNumber: '09709870-89',
+	                			balance: 21457.23
+	                		},
+	                		{
+	                			type: 'Second Mortgage',
+	                			remitTo: 'Alexander Hamilton',
+	                			remitAddress: '22 Main Street, Suite# 203',
+	                			remitCity: 'New York',
+	                			remitState: 'NY',
+	                			remitZipcode: '02202',
+	                			accountNumber: '09709870-89',
+	                			balance: 11609.87
+	                		}
+	                	];
+                	},
+                controllerAs: 'payoffsCtrl',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+        mapp.directive('datasheetNotes', function () {
+            return {
+                restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+                replace: true,
+                templateUrl: '/datasheet-notes.html',
+                link: function ($scope, element, attrs) { } //DOM manipulation
+            };
+		});
+        
+	})();

@@ -1,0 +1,196 @@
+.navbar-default {
+	background-color: navy;
+	justify-content: space-between;
+}
+
+#page-header .logo {
+	max-width:200px;
+	max-height:200px;
+	width: auto;
+	height: auto;
+	display: block;
+	margin: 10px !important;
+}
+
+#header-user-links {
+}
+
+.bordered-content {
+	background-color: #ffffff;
+	border: 1px solid #efefef;
+	box-shadow: 1px 1px 6px rgba(0, 0, 0, .3);
+	border-radius: 3px;
+	padding: 30px 20px;
+}
+
+html {
+	position: relative;
+	min-height: 100%;
+}
+
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+}
+
+.footer {
+	margin-top: -4px;
+	padding-top: 20px;
+	background-color: #ffffff;
+}
+
+.footer .offset-md-4 {
+	text-align: right;
+}
+.ec-header {
+	background-color: navy;
+	padding: 0px;
+	background-image: url("/images/realtor_ghost.png");
+	background-repeat: no-repeat;
+	background-size: 75%;
+	background-position: right bottom;
+}
+
+.ec-header-content {
+}
+
+#ecHeaderLinksMd {
+	background-color: #e1e1e1 !important;
+	color: navy;
+	border: none;
+	margin-bottom: 0px;
+}
+
+@media (min-width: 992px){
+	#ecHeaderLinksMd {
+		margin-top: 0px;
+		margin-right: 20px;
+		margin-left: auto;
+		border-radius: 0px 0px 4px 4px;
+	}
+}
+
+#ecHeaderLinksXs {
+	background-color: #e1e1e1 !important;
+	color: navy;
+	border: none;
+	margin-top: 0px;
+	margin-right: 20px;
+	margin-left: auto;
+	border-radius: 0px 0px 4px 4px;
+}
+
+#ecHeaderLinksMd a, #ecHeaderLinksXs a {
+	color: navy;
+	padding: 0px 4px 0px 0px;
+}
+
+#ecHeaderLinksMd a.dropdown-item, #ecHeaderLinksXs a.dropdown-item {
+	color: navy;
+	padding: 10px 10px 10px 10px;
+}
+
+#ecHeaderLinksMd a:hover, #ecHeaderLinksXs a:hover {
+	color: orange;
+}
+
+.ec-header .logo {
+	max-width: 180px;
+	max-height: 180px;
+	width: auto;
+	height: auto;
+	margin: 10px;
+}
+
+.nav-pills li {
+	text-align: center;
+}
+
+.email-alert {
+	color: orange;
+	-webkit-animation: pulsate 2s ease-out;
+	-webkit-animation-iteration-count: infinite; 
+	opacity: 0.0;
+}
+
+@-webkit-keyframes pulsate {
+	10% {-webkit-transform: scale(0.1, 0.1); opacity: 0.0;}
+	60% {opacity: 1.0;}
+	100% {-webkit-transform: scale(1.2, 1.2); opacity: 0.0;}
+}
+
+.nav-item {
+	vertical-align: middle;
+}
+
+.ec-header #fullSizeNavBar li a span {
+	display: inline;
+	display: inline-table;
+	display: inline-block;
+	vertical-align: middle;
+	line-height: 24px;
+}
+
+.info-card-blue {
+	color: #556293;
+	border: 1px solid #556293;
+}
+
+.info-card-brown {
+	color: #9a5555;
+	border: 1px solid #9a5555;
+}
+
+.info-card-green {
+	color: #9dc77d;
+	border: 1px solid #9dc77d;
+}
+
+.info-card-orange {
+	color: #f0ad4e;
+	border: 1px solid #f0ad4e;
+}
+
+.info-card-blue,
+.info-card-brown,
+.info-card-green,
+.info-card-orange {
+	border-radius: 4px;
+	box-shadow: 4px 4px 6px #c1c1c1;
+	padding: 10px;
+	margin-top: 10px;
+}
+
+.info-card-blue p, .info-card-blue tbody,
+.info-card-brown p, .info-card-brown tbody,
+.info-card-green p, .info-card-green tbody,
+.info-card-orange p, .info-card-orange tbody {
+	vertical-align: top;
+	color: #000000;
+	margin-top: 10px;
+}
+
+.info-card-blue h2 i,
+.info-card-brown h2 i,
+.info-card-green h2 i,
+.info-card-orange h2 i {
+	font-size: 100px;
+	margin: 0px;
+	vertical-align: middle;
+}
+
+.info-card-blue h2,
+.info-card-brown h2,
+.info-card-green h2,
+.info-card-orange h2 {
+	margin: 0px;
+	vertical-align: middle;
+}
+
+.bordered-content .row {
+	margin-bottom: 0px;
+}
+
+table caption {
+	caption-side: top;
+}

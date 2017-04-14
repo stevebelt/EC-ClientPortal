@@ -1,0 +1,113 @@
+    #sideTab {
+      position: fixed;
+      display: block;
+      top: 250px;
+      left: 0px;
+      background-color: #0057a2;
+      color: #ffffff;
+      padding: 6px;
+      border-radius: 0px 0px 4px 4px;
+      box-shadow: 4px 4px 4px #c1c1c1;
+    }
+
+    .rotate {
+      -webkit-transform-origin: 0 0;
+      -moz-transform-origin: 0 0;
+      -o-transform-origin: 0 0;
+      -ms-transform-origin: 0 0;
+      -webkit-transform: rotate(270deg);
+      -moz-transform: rotate(270deg);
+      -ms-transform: rotate(270deg);
+      -o-transform: rotate(270deg);
+      filter: progid:DXImageTransform.Microsoft.BasicImage(rotation=3);
+    }
+
+    .header {
+      background-color: #0057a2;
+    }
+
+    .header .logo img {
+      height: 150px;
+      padding: 20px;
+    }
+
+    .header .header-links {
+      background: url(/images/e-closing_ghost.png) no-repeat;
+      background-size: 100% 100%;
+    }
+    .section {
+      width: 100%
+    }
+
+    .bordered-content {
+      border: 1px solid #efefef;
+      box-shadow: 1px 1px 6px rgba(0, 0, 0, .3);
+      border-radius: 3px;
+      padding: 30px 20px;
+    }
+
+    .header .user-info {
+      position: absolute;
+      padding: 10px;
+      background-color: #f1f1f1;
+      color: #266ab6;
+      border-radius: 0px 0px 6px 6px;
+      top: 0;
+      right: 20px;
+      font-size: 13px;
+    }
+    .header .user-info ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    .header .user-info li {
+      height: 24px;
+      vertical-align: middle;
+      float: left;
+      padding-left: 10px;
+      padding-right: 10px;
+    }
+    .header .user-info li.menu-item {
+      background: url(/images/menu-seperator.png) no-repeat top right;
+    }
+    .header .user-info a:link {
+      color: #266ab6;
+      font: bold;
+      text-decoration: none;
+    }
+    .header .user-info a:hover {
+      color: color: #ff9f3b;
+    }
+    .header .user-info li a {
+      display: block;
+      height: 24px;
+      text-align: center;
+      line-height: 24px;
+    }
+    .header .user-info li a span {
+      display: inline;
+      display: inline-table;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 24px;
+    }
+    .header .site-links {
+      position: absolute;
+      bottom: 20px;
+      right: 20px;
+      color: #fff;
+    }
+    .header .site-links a {
+      color: #fff;
+    }
+    
+    .header .site-links a:link {
+      text-decoration: none;
+    }
+    
+    .header .site-links a:hover {
+      color: #ff9f3b;
+    }
+

@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <title>Simple example</title>
+        <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+
+        <!-- Fix for old browsers -->
+        <script src="http://nervgh.github.io/js/es5-shim.min.js"></script>
+        <script src="http://nervgh.github.io/js/es5-sham.min.js"></script>
+        <script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+        
+        <script src="http://netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+
+        <!--<script src="../bower_components/angular/angular.js"></script>-->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-route.js"></script>
+        <script src="/js/angular-file-upload.min.js"></script>
+        <!-- Angular Material -->
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-animate.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-aria.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular-messages.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.js"></script>
+        <link rel="stylesheet" href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0/angular-material.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons"><style>
+            .my-drop-zone { border: dotted 3px lightgray; }
+            .nv-file-over { border: dotted 3px red; } /* Default class applied to drop zones on over */
+            .another-file-over-class { border: dotted 3px green; }
+
+            html, body { height: 100%; }
+        </style>
+
+    </head>
+    
+    <body ng-app="ngUploadDialog">
+    
+ <div class="md-padding" ng-controller="BasicDemoCtrl as ctrl">
+    <div layout="row">
+        <div class="demo-md-panel-content">
+            <md-button class="md-primary md-raised demo-dialog-open-button"
+               ng-click="ctrl.showDialog($event)">
+                Dialog
+            </md-button>
+        </div>
+    </div>
+</div>   
+
+    
+    <script src="/js/dialog.controller.js"></script>
+    </body>
+    
+</html>

@@ -1,0 +1,198 @@
+<div id="datasheet-lender-form">
+
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Purpose</label> 
+        <md-select ng-model="lender.purpose"> 
+            <md-option ng-repeat="purpose in lenderPurposes" value="{{ purpose.display }}">{{ purpose.code }}</md-option> 
+        </md-select> 
+    </md-input-container>
+
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Loan Type</label> 
+        <md-select ng-model="lender.loanType"> 
+            <md-option ng-repeat="loanType in loanTypes" value="{{ loanType.display }}">{{ loanType.code }}</md-option>
+        </md-select> 
+    </md-input-container>
+    
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Lender</label> 
+        <md-select ng-model="lender.lender"> 
+            <md-option ng-repeat="lenderOption in lenderOptions" value="{{ lenderOption.display }}">{{ lenderOption.code }}</md-option> 
+        </md-select> 
+    </md-input-container>
+    
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Mortgage Broker</label> 
+        <md-select ng-model="lender.broker"> 
+            <md-option ng-repeat="broker in brokers" value="{{ broker.display }}">{{ broker.code }}</md-option> 
+        </md-select> 
+    </md-input-container>
+        
+    <div layout-gt-sm="row">
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Loan Originator</label> 
+            <md-select ng-model="lender.originator"> 
+                <md-option ng-repeat="originator in originators" value="{{ originator.display }}">{{ originator.code }}</md-option>
+            </md-select> 
+        </md-input-container>
+        <md-input-container class="md-block" flex-gt-sm>
+            <label>Loan Processor</label> 
+            <md-select ng-model="lender.processor"> 
+                <md-option ng-repeat="processor in processors" value="{{ processor.display }}">{{ processor.code }}</md-option> 
+            </md-select> 
+        </md-input-container>
+    </div>
+
+    <md-input-container class="md-block" flex-gt-sm>
+        <label>Lender File#</label> 
+        <input ng-model="lender.fileNumber"> 
+    </md-input-container>
+        
+    <div class="row">
+    
+        <!-- begin Mortgage Column -->
+        <div class="col-md-4">
+            <h3>Mortgage</h3>
+            <md-input-container class="md-block"> 
+                <label>Address</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Address 2</label> 
+                <input ng-model="mortgage.address2"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label> 
+                <md-select ng-model="mortgage.state"> 
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}">{{state.abbrev}}</md-option> 
+                </md-select> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Postal Code</label> 
+                <input name="postalCode" ng-model="mortgage.postalCode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">Postal Code should be a 5-digit number</div>
+                    <div ng-message="md-maxlength" class="my-message">Use only the 5-digits</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!-- end Mortgage Column -->
+                
+        <!-- begin Payment Column -->
+        <div class="col-md-4">
+            <h3>Payment</h3>
+            <md-input-container class="md-block"> 
+                <label>Address</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Address 2</label> 
+                <input ng-model="mortgage.address2"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label> 
+                <md-select ng-model="mortgage.state"> 
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}">{{state.abbrev}}</md-option> 
+                </md-select> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Postal Code</label> 
+                <input name="postalCode" ng-model="mortgage.postalCode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">Postal Code should be a 5-digit number</div>
+                    <div ng-message="md-maxlength" class="my-message">Use only the 5-digits</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!-- end Payment Column -->
+                
+        <!-- begin Post Processing Column -->
+        <div class="col-md-4">
+            <h3>Post Processing</h3>
+            <md-input-container class="md-block"> 
+                <label>Address</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Address 2</label> 
+                <input ng-model="mortgage.address2"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label> 
+                <md-select ng-model="mortgage.state"> 
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}">{{state.abbrev}}</md-option> 
+                </md-select> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Postal Code</label> 
+                <input name="postalCode" ng-model="mortgage.postalCode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">Postal Code should be a 5-digit number</div>
+                    <div ng-message="md-maxlength" class="my-message">Use only the 5-digits</div>
+                </div>
+            </md-input-container>
+        </div>
+        <!-- end Post Processing Column -->
+    </div> <!-- End row -->
+    
+    <div class="row justify-content-md-center">
+        <div class="col-md-4">
+            <h3>Estimated Processing Fee</h3>
+            <table class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th>Amount</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-forEach="">
+                        <td>Appraisal Fee</td>
+                        <td>100.00</td>
+                    </tr>
+                    <tr ng-forEach="">
+                        <td>Home Inspection</td>
+                        <td>195.00</td>
+                    </tr>
+                    <tr ng-forEach="">
+                        <td>Patriot Act</td>
+                        <td>35.00</td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th>Total</th>
+                        <th>330.00</th>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

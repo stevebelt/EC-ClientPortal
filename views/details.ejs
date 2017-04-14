@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src='js/guid.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/page-layout.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="/images/avatars.svg" rel="stylesheet">
+     <!-- BOOTSTRAP -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+    <link rel="stylesheet" href="https://v4-alpha.getbootstrap.com/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title><%= siteTitle %></title>
+    <script src="/reload/reload.js"></script>
+    <script type="text/javascript">
+    
+
+    var array = []; //eval('(' + <%- json %> + ')');
+    var currentKey = 'fileID';
+    var currentDirection = 'A';
+    var sort = (key, direction) => {
+      key = key | currentKey;
+      direction = direction | currentDirection;
+      array.sort(function(a,b){return a[1] - b[1]});
+      array.reverse();
+
+    };
+
+  </script>
+  </head>
+
+  <body>
+    <div class="header" role="banner">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="https://www.e-closing.com" title="Go to E-Closing.com">
+              <img src="images/acmecorp_logo_white.png" alt="Acme Corporation (Logo)" height="100"> </a>
+          </div>
+          <div class='user-info'>
+          <ul>
+            <li class="menu-item"><span><a href="#">Help</a></span></li>
+            <li class="menu-item"><span><a href="#"><span class="material-icons md-icon">email</span>Messages</a></span></li>
+            <li class="menu-item"><span><a href="#"><span class="material-icons md-icon-orange">face</span>Stephen E. Belt</a></span></li>
+            <li class="logout"><span><a href="#">Logout</a></span></li>
+          </ul>
+          </div>
+          <div class="nav">
+            <a href="https://www.e-closing.com/about/">About Us</a>
+            <span class="separator">|</span> 
+            <a href="https://www.e-closing.com/#">Help</a>
+            <span class="separator">|</span> 
+            <a href="https://www.e-closing.com/#">Questions &amp; Support</a> 
+            <span class="separator">|</span> <span class="client-id">Client ID: {{clientID}}}</span>
+          </div>
+        </div> 
+      </div>
+    </div>
+    <!-- Tab which floats on the left side of the page -->
+    <div id="sideTab" class="rotate"><span>Server Time: ...loading</span></div>
+
+    <!-- Nav Bar -->
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li ><a href="/">List Files</a></li>
+      </ul>
+    </div>
+
+    <!-- Begin Main Content Area... -->
+    <div class="content-wrapper">
+      <div class="container content-bordered">
+        <!-- navigation pills -->
+        <div>
+          <ul class="nav nav-pills">
+            <li class="active"><a href="#">Details</a></li>
+            <li><a href="/documents">Documents</a></li>
+            <li><a href="/zillow/search?address=<%= address %>&citystatezip=<%= citystatezip %>">Zillow</a></li>
+            <li><a href="#">Map</a></li>
+          </ul>
+        </div>
+        <!-- page heading -->
+        <div class="row">
+          <div class="col-xs-8 col-sm-6">
+            <h2><%= contentTitle %></h2>
+          </div>
+        </div>
+         <ul id="messages"></ul>
+        <div class="row">
+          <div class="col-xs-8 col-sm-6">
+            <img src="/images/shim.png" height="12px" />
+          </div>
+        </div>
+
+        <style type="text/css">
+          .info-card-person {
+            border: 1px solid #556293;
+            border-radius: 4px;
+            box-shadow: 4px 4px 6px #c1c1c1;
+            width: 200px;
+            margin: 10px;
+          }
+          .info-card-person .icon-box {
+            display: block;
+            border: none;
+            border-radius: 4px 0px 0px 4px;
+            height: 100px;
+            width: 100px;
+            color: white;
+            font-size: 80px;
+            background-color: #556293;
+            text-align: center;
+            padding: 10px;
+          }
+          .info-card-person .info-person {
+            font-size: 80px;
+            margin: auto;
+          }
+          .info-card-building {
+            border: 1px solid #9dc77d;
+            border-radius: 4px;
+            box-shadow: 4px 4px 6px #c1c1c1;
+            width: 200px;
+            margin: 10px;
+          }
+          .info-card-building .icon-box {
+            display: block;
+            border: none;
+            border-radius: 4px 0px 0px 4px;
+            height: 100px;
+            width: 100px;
+            color: white;
+            font-size: 80px;
+            background-color: #9dc77d;
+            text-align: center;
+            padding: 10px;
+          }
+          .info-card-building .info-building {
+            font-size: 80px;
+            margin: auto;
+          }
+          .info-card-document {
+            border: 1px solid #9a5555;
+            border-radius: 4px;
+            box-shadow: 4px 4px 6px #c1c1c1;
+            width: 200px;
+            margin: 10px;
+          }
+          .info-card-document .icon-box {
+            display: block;
+            border: none;
+            border-radius: 4px 0px 0px 4px;
+            height: 100px;
+            width: 100px;
+            color: white;
+            font-size: 80px;
+            background-color: #9a5555;
+            text-align: center;
+            padding: 10px;
+          }
+          .info-card-document .info-document {
+            font-size: 80px;
+            margin: auto;
+          }
+        </style>
+
+        <div class="info-card-document">
+          <div class="icon-box"><i class="material-icons info-document">description</i></div>
+          <div class="info-text"></div>
+        </div>
+
+        <div class="info-card-building">
+          <div class="icon-box"><i class="material-icons info-building">home</i></div>
+          <div class="info-text"></div>
+        </div>
+
+        <div class="info-card-person">
+          <div class="icon-box"><i class="material-icons info-person">person</i></div>
+          <div class="info-text"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-4 card-top-place">
+                <i class="material-icons" style="font-size:100px">home</i>
+              </div>
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-3">Agency</div>
+                  <div class="col-md-8"><%= data.Agency.Selling_Agent %></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">Phone</div>
+                  <div class="col-md-8"><%= data.Agency.Phone_Number %></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">Email</div>
+                  <div class="col-md-8"><%= data.Agency['E-mail'] %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div class="row">
+              <div class="col-md-4 card-top-person">
+                <i class="material-icons" style="font-size:100px">person</i>
+              </div>
+              <div class="col-md-7">
+                <div class="row">
+                  <div class="col-md-3">Agent</div>
+                  <div class="col-md-8"><%= data.Agency.Listing_Agent.Agent %></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">Phone</div>
+                  <div class="col-md-8"><%= data.Agency.Listing_Agent.Phone_Number %></div>
+                </div>
+                <div class="row">
+                  <div class="col-md-3">Email</div>
+                  <div class="col-md-8"><%= data.Agency.Listing_Agent['E-mail'] %></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+
+        <div class="row">
+          <div class="col-md-12"><img src="/images/shim.png" height="12px"></div>
+        </div>
+        
+        <div class="row" style="border-top: 1px dotted #c2c5c9;">
+          <div class="col-md-12"><img src="/images/shim.png" height="12px"></div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-12"><h2>Realtors</h2></div>
+        </div>
+        <div class="row">
+          <% for (var i=0; i < data.Realtors.length; i++) {
+            var realtor = data.Realtors[i]; %>
+
+
+            <div class="col-sm-3">
+              <div class="card" style="height:100%">
+                <div class="img-fluid card-top-person" style="width: 100px; margin: auto;">
+                  <i class="material-icons" style="font-size:100px">person</i>
+                </div>
+                <div class="card-block">
+                  <h4 class="card-title"><%=realtor.Realtor %></h4>
+                  <p class="card-text" style="vertical-align: middle;"><%= realtor.Address %><br/>
+                    <% if(realtor.Home_Phone && realtor.Home_Phone != '') { %><i class="material-icons" style="font-size: 12px;">phone</i><%= realtor.Home_Phone %><% } %><br/>
+                    <% if(realtor.Work_Phone && realtor.Work_Phone != '') { %><i class="material-icons" style="font-size: 12px;">phone</i><%= realtor.Work_Phone %><% } %><br/>
+                    <% if(realtor['E-mail'] && realtor['E-mail'] != '') { %><i class="material-icons" style="font-size: 12px;">email</i><%= realtor['E-mail'] %><% } %>
+                  </p>
+                  <a href="#" class="btn btn-primary">Go somewhere</a>
+                </div>
+              </div>
+            </div>
+        
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <!-- ... End Main Content Area. -->
+
+  </body>
+
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    var socket = io.connect('http://localhost:3000')
+
+    socket.on('sideTab', (data) => {
+      var display = document.createElement('span')
+          , text = document.createTextNode(data.label + ': ' + data.val);
+      display.appendChild(text);
+      var doomed = document.getElementById('sideTab').childNodes[0];
+      document.getElementById('sideTab').replaceChild(display, doomed);
+    });
+
+    socket.on('private', function (data) {
+      var li = document.createElement('li')
+        , text = document.createTextNode('Private: ' + data.msg);
+      li.appendChild(text)
+      document.getElementById('messages').appendChild(li)
+    });
+
+    socket.on('broadcast', function (data) {
+      var li = document.createElement('li')
+        , text = document.createTextNode('Broadcast: ' + data.msg);
+      li.appendChild(text)
+      document.getElementById('messages').appendChild(li)
+    });
+
+    socket.emit('register-session', {sessionId: Math.uuid()});
+    socket.emit('private', {msg: 'Private message from the cllient'});
+    socket.emit('broadcast', {msg: 'Broadcast message from the cllient'});
+  </script>
+</html>  

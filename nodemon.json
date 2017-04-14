@@ -1,0 +1,13 @@
+{
+	"ignore": [
+		".git",
+	    "node_modules/**/node_modules",
+	    "nodemon.json"
+	],
+	"watch": [
+	    "public/",
+	    "views/",
+	    "./"
+	],
+	"ext": "js json ejs css html htm"
+}

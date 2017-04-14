@@ -1,0 +1,49 @@
+<div id="datasheet-financial-form">
+
+	<md-input-container class="md-block"> <label>Address</label>
+	<input ng-model="user.address"> </md-input-container>
+
+	<md-input-container class="md-block"> <label>Address
+		2</label> <input ng-model="user.address2"> </md-input-container>
+
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+		<label>County</label> <input ng-model="user.county"> </md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+		<label>City</label> <input ng-model="user.city"> </md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+		<label>State</label> <md-select ng-model="user.state"> <md-option
+			ng-repeat="state in states" value="{{state.abbrev}}">
+		{{state.abbrev}} </md-option> </md-select> </md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+		<label>Postal Code</label> <input name="postalCode"
+			ng-model="user.postalCode" required ng-pattern="/^[0-9]{5}$/"
+			md-maxlength="5">
+
+		<div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+			<div ng-message="required" class="my-message">You must supply a
+				postal code.</div>
+			<div ng-message="pattern" class="my-message">That doesn't look
+				like a valid postal code.</div>
+			<div ng-message="md-maxlength" class="my-message">Use only the
+				5-digit postal code</div>
+		</div>
+		</md-input-container>
+	</div>
+
+	<div layout-gt-sm="row">
+		<md-input-container class="md-block" flex-gt-sm>
+        <label>Property Type</label> <md-select ng-model="user.propertyType"> <md-option
+            ng-repeat="propertyType in propertyTypes" value="{{propertyType.display}}">
+        {{propertyType.code}} </md-option> </md-select> </md-input-container>
+
+		<md-input-container class="md-block" flex-gt-sm>
+        <label>Property Use</label> <md-select ng-model="user.propertyUse"> <md-option
+            ng-repeat="propertyUse in propertyUses" value="{{propertyUse.display}}">
+        {{propertyUse.code}} </md-option> </md-select> </md-input-container>
+	</div>
+
+</div>

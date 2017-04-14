@@ -1,0 +1,46 @@
+<div class="row">
+     <div class="col-md-12">
+        <h3>Property Information</h3>
+    </div>
+    <div class="col-md-6">
+        <!--  <p>ZPID: {{ zillowCtrl.zpid }}</p> -->
+        <p ng-bind-html="zillowCtrl.propertyDescription"></p>
+    </div>
+    <!-- div class="col-md-12">
+        <p>Basic: {{ zillowCtrl.zillowBasic }}</p>
+    </div>  -->
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <h3>Comparables</h3>
+    </div>
+    <div class="col-md-6">
+        <div id="map" style="width:100%; height: 400px;"></div>
+    </div>
+    
+    <div class="col-md-6">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>Zestimate</th>
+                    <th>Address</th>
+                    <th>Square Feet</th>
+                    <th>Year Built</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="comp in zillowCtrl.zillowComps track by $index"  ng-mouseover="zillowCtrl.hoverComp($index)">
+                    <td>$&nbsp;{{ comp.estimate }}</td>
+                    <td>{{ comp.street + ", " + comp.city }}</td>
+                    <td>{{ comp.finishedSqFt }}</td>
+                    <td>{{ comp.yearBuilt }}</td>
+                </tr>
+            </tbody>        
+            <tfoot>
+                <tr>
+                    <th colspan="4" style="text-align: right; vertical-align: bottom;"><a href="http://www.zillow.com" target="blank"><img src="/images/Zillowlogo_200x50.gif" style="outline : none;"/></a></th>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>

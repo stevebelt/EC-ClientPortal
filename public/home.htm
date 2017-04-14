@@ -1,0 +1,31 @@
+<!-- page heading -->
+<div class="row">
+  <div class="col-xs-12 col-sm-12">
+    <h2>{{ pageName }}</h2>
+  </div>
+</div>
+
+<table class="table table-striped table-hover"> 
+  <caption>Click on a file to see details</caption> 
+  <thead> 
+    <tr> 
+      <th>File ID</th> 
+      <th>Close Date</th> 
+      <th>Loan Type</th> 
+      <th>Address</th> 
+    </tr> 
+  </thead> 
+  <tbody> 
+    <tr ng-repeat="closing in closings" style='cursor: pointer;' onClick='doClick("<%= files[i].fileID %>")'>
+      <th scope="row">{{ closing.fileID }}</th>
+      <td>{{ closing.closeDate }}</td>
+      <td>{{ closing.loanType }}</td> 
+      <td>{{ closing.address }}</td> 
+    </tr> 
+  </tbody> 
+</table>
+<script type="text/javascript">
+    var doClick = (fileID) => {
+      window.location.href = '#details?FileID=' + fileID;
+    };
+</script>

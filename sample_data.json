@@ -1,0 +1,61 @@
+{
+	"files": [
+		{ 
+			"fileID": "2007-70",
+			"closeDate": "2008-04-01",
+			"loanType": "Purchase",
+			"address": "15 Warren Street, Boston MA 02101"
+		},
+		{
+			"fileID": "2007-70-C",
+			"closeDate": "2007-09-09",
+			"loanType": "Second Mortgage",
+			"address": "Lot 16 Block 4 PIN 39094, commonly known as 5546 Mt. Acara Drive, Concord NH 03301"
+		}
+	],
+	"Realtor_Information": {
+		"Agency": {
+			"Selling_Agent": "Tardiff Real Estate",
+			"Phone_Number": "",
+			"E-mail": "Taridff@Tardiffreal.com",
+			"Listing_Agent": {
+				"Agent": "Brian Donahue, Apex Realty",
+				"Phone_Number": "(609) 111-2222",
+				"E-mail": "Apex@ApexRealty.com"
+			}
+		},
+		"Realtors": [
+			{
+				"Realtor": "Dan Swain",
+				"Address": "123 Main Steet, Boston MA 02108",
+				"Home_Phone": "(712) 234-1212",
+				"Work_Phone": "",
+				"E-mail": "None"
+			}, {
+				"Realtor": "Barb Swain",
+				"Address": "123 Main Steet, Boston MA 02108",
+				"Home Phone": "(712) 234-1212",
+				"Work Phone": "",
+				"E-mail": "None"
+			}
+		]
+	},
+	"documents": [
+		{
+			"title": "Sample Document 1",
+			"description": "This is a sample document and does not really exist!",
+			"link": "http://localhost:3000/SampleDocument1.pdf",
+			"icon": "http://localhost:3000/adobe_logo.png",
+			"author": "Travis Magee",
+			"published": "2017-01-29 08:37am"
+		},
+		{
+			"title": "Sample Document 2",
+			"description": "This is yet another doppleganger for a docuemt that does not really exist!",
+			"link": "http://localhost:3000/SampleDocument2.pdf",
+			"icon": "http://localhost:3000/adobe_logo.png",
+			"author": "Spencer McDoogle",
+			"published": "2017-03-09 16:48pm"
+		}
+	]
+}

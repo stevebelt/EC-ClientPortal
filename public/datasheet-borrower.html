@@ -1,0 +1,204 @@
+<div id="datasheet-lender-form">
+
+    <div class="row">
+        <!-- BORROWER column begin -->
+        <div class="col-md-6" >
+            
+            <md-input-container class="md-block"> 
+                <h3>Borrower</h3> 
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>First Name</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Last Name</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>SSN</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" style="height: 41px"> 
+                <p>&nbsp;</p> 
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>Address</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Address 2</label> 
+                <input ng-model="mortgage.address2"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>County</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label> 
+                <md-select ng-model="mortgage.state"> 
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}">{{state.abbrev}}</md-option> 
+                </md-select> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Postal Code</label> 
+                <input name="postalCode" ng-model="mortgage.postalCode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">Postal Code should be a 5-digit number</div>
+                    <div ng-message="md-maxlength" class="my-message">Use only the 5-digits</div>
+                </div>
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>Home Phone</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Work Phone</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Cell Phone</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>Email</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Fax</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Marital Status</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+            
+            
+            
+        </div>
+        <!-- BORROWER column end -->
+ 
+        <!-- CO-BORROWER column begin -->
+        <div class="col-md-6" >
+            
+            
+            <md-input-container class="md-block"> 
+                <h3>CO-Borrower</h3> 
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>First Name</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Last Name</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>SSN</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block">
+                <md-checkbox ng-model="data.cb1" aria-label="Checkbox 1">
+                    Copy Borrower's Information
+                </md-checkbox>
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>Address</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Address 2</label> 
+                <input ng-model="mortgage.address2"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>County</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>City</label> 
+                <input ng-model="mortgage.city"> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>State</label> 
+                <md-select ng-model="mortgage.state"> 
+                    <md-option ng-repeat="state in states" value="{{state.abbrev}}">{{state.abbrev}}</md-option> 
+                </md-select> 
+            </md-input-container>
+
+            <md-input-container class="md-block" flex-gt-sm>
+                <label>Postal Code</label> 
+                <input name="postalCode" ng-model="mortgage.postalCode" required ng-pattern="/^[0-9]{5}$/" md-maxlength="5">
+                <div ng-messages="userForm.postalCode.$error" role="alert" multiple>
+                    <div ng-message="required" class="my-message">You must supply a postal code.</div>
+                    <div ng-message="pattern" class="my-message">Postal Code should be a 5-digit number</div>
+                    <div ng-message="md-maxlength" class="my-message">Use only the 5-digits</div>
+                </div>
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>Home Phone</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Work Phone</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Cell Phone</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+            
+            <md-input-container class="md-block"> 
+                <label>Email</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Fax</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+
+            <md-input-container class="md-block"> 
+                <label>Marital Status</label>
+                <input ng-model="mortgage.address"> 
+            </md-input-container>
+            
+        </div>
+        <!-- CO-BORROWER column begin -->
+ 
+    </div> <!-- End row -->
+
+    
+</div>

@@ -1,0 +1,27 @@
+{
+  "name": "websocket",
+  "version": "1.0.0",
+  "description": "An experiment with creating websockets in node.js",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server --inline --colors --watch --display-error-details --display-cached  --port 3001 --hot",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "sbelt",
+  "license": "ISC",
+  "dependencies": {
+    "angular-file-upload": "^2.5.0",
+    "cors": "^2.8.3",
+    "date-and-time": "^0.4.0",
+    "ejs": "^2.5.6",
+    "express": "^4.15.2",
+    "grunt-svgstore": "^1.0.0",
+    "guid": "0.0.12",
+    "http": "0.0.0",
+    "node-schedule": "^1.2.1",
+    "numeral": "^2.0.6",
+    "reload": "^1.1.1",
+    "socket.io": "^1.7.3",
+    "xml2js": "^0.4.17"
+  }
+}

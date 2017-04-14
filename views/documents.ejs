@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script type="text/javascript" src='js/guid.js'></script>
+    <link rel="stylesheet" type="text/css" href="css/page-layout.css">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!-- BOOTSTRAP -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <title><%= siteTitle %></title>
+    <script src="/reload/reload.js"></script>
+    <script type="text/javascript">
+    
+
+    //var array = eval('(' + <%- json %> + ')');
+    var array = [];
+    var currentKey = 'fileID';
+    var currentDirection = 'A';
+    var sort = (key, direction) => {
+      key = key | currentKey;
+      direction = direction | currentDirection;
+      array.sort(function(a,b){return a[1] - b[1]});
+      array.reverse();
+
+    };
+
+  </script>
+  </head>
+
+  <body>
+    <div class="header" role="banner">
+      <div class="container">
+        <div class="header-content">
+          <div class="logo">
+            <a href="https://www.e-closing.com" title="Go to E-Closing.com">
+              <img src="images/acmecorp_logo_white.png" alt="Acme Corporation (Logo)" height="100"> </a>
+          </div>
+          <div class='user-info'>
+          <ul>
+            <li class="menu-item"><span><a href="#">Help</a></span></li>
+            <li class="menu-item"><span><a href="#"><span class="material-icons md-icon">email</span>Messages</a></span></li>
+            <li class="menu-item"><span><a href="#"><span class="material-icons md-icon-orange">face</span>Stephen E. Belt</a></span></li>
+            <li class="logout"><span><a href="#">Logout</a></span></li>
+          </ul>
+          </div>
+          <div class="nav">
+            <a href="https://www.e-closing.com/about/">About Us</a>
+            <span class="separator">|</span> 
+            <a href="https://www.e-closing.com/#">Help</a>
+            <span class="separator">|</span> 
+            <a href="https://www.e-closing.com/#">Questions &amp; Support</a> 
+            <span class="separator">|</span> <span class="client-id">Client ID: {{clientID}}}</span>
+          </div>
+        </div> 
+      </div>
+    </div>
+
+     <!-- Tab which floats on the left side of the page -->
+    <div id="sideTab" class="rotate"><span>Server Time: ...loading</span></div>
+
+    <!-- Nav Bar -->
+    <div class="container">
+      <ul class="nav nav-tabs">
+        <li  class="active"><a href="#">List Files</a></li>
+      </ul>
+    </div>
+
+    <div class="container content-wrapper">
+      <div class="row">
+        <div class="col-sm-12 content-bordered">
+          <!-- navigation pills -->
+          <div>
+            <ul class="nav nav-pills">
+              <li><a href="/details">Details</a></li>
+              <li class="active"><a href="#">Documents</a></li>
+              <li><a href="/zillow/search?address=<%= address %>&citystatezip=<%= citystatezip %>">Zillow</a></li>
+              <li><a href="#">Map</a></li>
+            </ul>
+          </div>
+          <!-- page heading -->
+          <div class="row">
+            <div class="col-xs-8 col-sm-6">
+              <h2><%= contentTitle %></h2>
+            </div>
+          </div>
+          <!-- Begin Main Content Area... -->
+          <div class="row">
+            <div class="col-xs-12 col-sm-12">
+
+              <ul id="messages"></ul>
+
+              <table class="table table-striped table-hover"> 
+                <caption>Click on a file to see details</caption> 
+                <thead> 
+                  <tr> 
+                    <th>Title</th> 
+                    <th>Description</th> 
+                    <th>Author</th> 
+                    <th>Published</th> 
+                  </tr> 
+                </thead> 
+                <tbody> 
+                  <% for(var i=0; i < documents.length; i++ ) {%>
+                  <tr style='cursor: pointer;' onClick='doClick("<%= documents[i].link %>")'>
+                    <th scope="row"><%= documents[i].title %></th>
+                    <td><%= documents[i].description %></td>
+                    <td><%= documents[i].author %></td> 
+                    <td><%= documents[i].published %></td> 
+                  </tr> 
+                  <% } %>
+                </tbody> 
+              </table>
+
+            </div>
+          </div>
+          <!-- ... End Main Content Area. -->
+        </div>
+      </div>
+    </div>
+
+  </body>
+
+  
+  <script src="/socket.io/socket.io.js"></script>
+  <script type="text/javascript">
+    var doClick = (fileURL) => {
+      window.location.href = fileURL;
+    };
+  </script>
+  <script>
+    var socket = io.connect('http://localhost:3000')
+
+    socket.on('sideTab', (data) => {
+      var display = document.createElement('span')
+          , text = document.createTextNode(data.label + ': ' + data.val);
+      display.appendChild(text);
+      var doomed = document.getElementById('sideTab').childNodes[0];
+      document.getElementById('sideTab').replaceChild(display, doomed);
+    });
+
+    socket.on('private', function (data) {
+      var li = document.createElement('li')
+        , text = document.createTextNode('Private: ' + data.msg);
+      li.appendChild(text)
+      document.getElementById('messages').appendChild(li)
+    });
+
+    socket.on('broadcast', function (data) {
+      var li = document.createElement('li')
+        , text = document.createTextNode('Broadcast: ' + data.msg);
+      li.appendChild(text)
+      document.getElementById('messages').appendChild(li)
+    });
+
+    socket.emit('register-session', {sessionId: Math.uuid()});
+    socket.emit('private', {msg: 'Private message from the cllient'});
+    socket.emit('broadcast', {msg: 'Broadcast message from the cllient'});
+  </script>
+</html>  

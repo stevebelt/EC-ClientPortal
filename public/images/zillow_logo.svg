@@ -1,0 +1,11 @@
+<?xml version="1.0"?>
+<svg style="display: inline" xmlns="http://www.w3.org/2000/svg" xmlns:svg="http://www.w3.org/2000/svg" id="svg_zillow" viewbox="0 0 284 224">
+	<g>
+	    <title>Zillow Logo</title>
+	    <description>A blue and green shadow of a house with a large Z splitting it into two pieces</description>
+		<path id="svg_8" d="m77,59l78,-54l48,30c-42,5 -84,13 -126,24z" stroke-width="5" stroke="#5477bb" fill="#5477bb"/>
+		<path id="svg_11" d="m115,138l98,-96l64,48l-41,5l-10,20c-38,4.66667 -76,13.33333 -111,23z" stroke-width="5" stroke="#5477bb" fill="#5477bb"/>
+		<path id="svg_12" d="m216,146l-11,33c-63.66667,7.66667 -122.33333,19.33333 -185,38l10,-27c56,-23.66667 119,-39.33333 186,-44z" stroke-width="5" stroke="#87bc43" fill="#87bc43"/>
+		<path id="svg_17" d="m153,66l-118,109l21,-56l-48,9l29,-28c38.66667,-15.33333 77.33333,-26.66667 116,-34z" stroke-linecap="null" stroke-linejoin="null" stroke-dasharray="null" stroke-width="5" stroke="#87bc43" fill="#87bc43"/>
+	</g>
+</svg>
