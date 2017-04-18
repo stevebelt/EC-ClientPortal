@@ -22,7 +22,7 @@
               selectionMode: 'multiple',
               tooltip: {
                 trigger: 'selection',
-                text: 'value'
+                text: 'value',
               }
             };
             
@@ -52,26 +52,28 @@
         
         
     var genPdf = function(){
-        var docDefinition = { content: [
-            { image: imageDef, width: 300},
-            { text: "Fee Calculations"},
-            { table: {
-                headerRows: 1,
-                body: [
-                    [{text:'Estimated Payment', bold: true}, {text: '$1,596 / mo', bold: true}],
-                    ['Loan Amount', '$240,000'],
-                    ['Down Payment', '$60,000'],
-                    ['Interest Rate', '3.824%'],
-                    ['Loan Term', '30 Years'],
-                    ['Taxes & Insurance Included?', 'Yes'],
-                    ['Property Tax', '1.6% / yr'],
-                    ['Homeowner\'s Insurance', '$800 / yr'],
-                    ['Mortgage Insurance', '$0 / yr'],
-                    ['HOA Dues', '$0 / yr']
-                ]}
-            }
-            
-            ]
+        var docDefinition = { 
+                content: [
+                    { image: imageDef, width: 300},
+                    { text: "Fee Calculations"},
+                    { layout: "lightHorizontalLines",
+                      table: {
+                        widths: ['*', 'auto'],
+                        headerRows: 1,
+                        body: [
+                            [{text:'Estimated Payment', bold: true}, {text: '$1,596 / mo', bold: true}],
+                            ['Loan Amount', '$240,000'],
+                            ['Down Payment', '$60,000'],
+                            ['Interest Rate', '3.824%'],
+                            ['Loan Term', '30 Years'],
+                            ['Taxes & Insurance Included?', 'Yes'],
+                            ['Property Tax', '1.6% / yr'],
+                            ['Homeowner\'s Insurance', '$800 / yr'],
+                            ['Mortgage Insurance', '$0 / yr'],
+                            ['HOA Dues', '$0 / yr']
+                            ]}
+                    }  // end table
+                ]  // end content
         };
         pdfMake.createPdf(docDefinition).open();
     }
