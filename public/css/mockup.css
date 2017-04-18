@@ -36,6 +36,7 @@ body {
 .footer {
 	margin-top: -4px;
 	padding-top: 20px;
+    padding-bottom: 10px;
 	background-color: #ffffff;
 }
 
@@ -189,8 +190,20 @@ body {
 
 .bordered-content .row {
 	margin-bottom: 0px;
+	display: flex;
+}
+
+#mainView {
+	min-height: 500px;
 }
 
 table caption {
 	caption-side: top;
+}
+
+md-tabs-content-wrapper {
+	padding:20px; 
+	background-color: #eeeeee;
+	border-radius: 6px;
+	height: 100%
 }

@@ -1,0 +1,83 @@
+<div>
+    <table class="table table-bordered table-hover table-condensed">
+        <tr style="font-weight: bold">
+            <th>Pay Type</th>
+            <th>Remit To</th>
+            <th>Address</th>
+            <th>City</th>
+            <th>State</th>
+            <th>Zipcode</th>
+            <th>Account#</th>
+            <th>Balance</th>
+            <th colspan="2">&nbsp;</th>
+        </tr>
+        <tr ng-repeat="user in users">
+            <td>
+                <!-- editable status (select-local) -->
+                <span editable-select="user.status" e-name="status" e-form="rowform" e-ng-options="s.value as s.text for s in statuses">
+                    {{ showStatus(user) }}
+                </span>
+            </td>
+            <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.name" e-name="name" e-form="rowform" onbeforesave="checkName($data, user.id)">
+                    {{ user.name || 'empty' }}
+                </span>
+            </td>
+            <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.address" e-name="address" e-form="rowform" onbeforesave="checkName($data, user.id)">
+                    {{ user.address || 'empty' }}
+                </span>
+            </td>
+            <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.city" e-name="city" e-form="rowform" onbeforesave="checkName($data, user.id)">
+                    {{ user.city || 'empty' }}
+                </span>
+            </td>
+            <td>
+                <!-- editable state (select-remote) -->
+                <span editable-select="user.state" e-name="state" e-form="rowform" e-ng-options="s.value as s.text for s in states">
+                    {{ showState(user) }}
+                </span>
+            </td>
+            <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.zipcode" e-name="zipcode" e-form="rowform" onbeforesave="checkName($data, user.id)">
+                    {{ user.zipcode || 'empty' }}
+                </span>
+            </td>
+            <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.accountNumber" e-name="accountNumber" e-form="rowform">
+                    {{ user.accountNumber || '' }}
+                </span>
+            </td>
+            <td>
+                <!-- editable username (text with validation) -->
+                <span editable-text="user.balance" e-name="balance" e-form="rowform">
+                    {{ user.balance | currency }}
+                </span>
+            </td>
+
+            <td colspan="2" style="white-space: nowrap">
+                <!-- form -->
+                <form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                    <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                        <i class="fa fa-save" aria-hidden="true"></i>
+                    </button>
+                    <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </button>
+                </form>
+                <div class="buttons" ng-show="!rowform.$visible">
+                    <button type="button" class="btn btn-primary" ng-click="rowform.$show()"><i class="fa fa-pencil" aria-hidden="true"></i></button>
+                    <button type="button" class="btn btn-danger" ng-click="removeUser($index)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                </div>  
+            </td>
+        </tr>
+    </table>
+
+    <button type="button" class="btn btn-default" ng-click="addUser()">Add row</button>
+</div>

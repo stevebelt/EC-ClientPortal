@@ -1,5 +1,5 @@
 (function() {
-		var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 'ngUploadDialog', 'ngZillow']);
+		var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 'ngUploadDialog', 'ngZillow', 'ngXedit']);
 		
 		mapp.config(function($routeProvider) {
 		    $routeProvider
@@ -7,18 +7,23 @@
 		        templateUrl : "mockup-datasheet.htm"
 		    })
 		    .when("/messages", {
-		        templateUrl : "green.htm"
+		        templateUrl : "mockup-messages.htm"
 		    })
-		    .when("/upload", {
-		    	templateUrl : "green.htm"
+		    .when("/details", {
+		    	templateUrl : "mockup-originator-details.htm"
 		    })
 		    .when("/fee-calculator", {
-		        templateUrl : "fee-calculator.htm"
+		        templateUrl : "mockup-fee-calculator.htm"
 		    })
 		    .when("/zillow", {
 		    	templateUrl : "mockup-zillow.htm",
 		    	controller: "ZillowController",
 		    	controllerAs: "zillowCtrl"
+		    })
+		    .when("/xedit", {
+		        templateUrl : "mockup-xedit.htm",
+		        controller: "XeditController",
+		        controllerAs: "EditableRowCtrl"
 		    })
 		    .otherwise({
 		        templateUrl : "mockup-originator-home.htm"
@@ -48,6 +53,20 @@
 		      	// controllerAs: 'nameCntrl',
 		        link: function ($scope, element, attrs) { }
 			};
+		});
+		
+		mapp.directive('xeditTable', function(){
+		    return {
+		        restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+		        replace: true,
+		        scope: { currentuser: '=' }, //@ reads the attribute value, = provides two-way binding, & works with functions
+		        templateUrl : "mockup-xedit.htm",
+                controller: "XeditController",
+                controllerAs: "EditableRowCtrl",
+		        // controller: rankCntrlr,     //Embed a custom controller in the directive
+		        // controllerAs: 'nameCntrl',
+		        link: function ($scope, element, attrs) { }
+		    };
 		});
 		
         mapp.directive('datasheet', function(){

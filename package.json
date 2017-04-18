@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "angular-file-upload": "^2.5.0",
+    "angular-xeditable": "^0.7.0",
     "cors": "^2.8.3",
     "date-and-time": "^0.4.0",
     "ejs": "^2.5.6",
@@ -20,6 +21,7 @@
     "http": "0.0.0",
     "node-schedule": "^1.2.1",
     "numeral": "^2.0.6",
+    "pdfmake": "^0.1.27",
     "reload": "^1.1.1",
     "socket.io": "^1.7.3",
     "xml2js": "^0.4.17"

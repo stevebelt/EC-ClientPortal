@@ -1,0 +1,332 @@
+<script type="text/javascript">
+          google.charts.load("current", {packages:['corechart']});
+          google.charts.setOnLoadCallback(drawChart);
+          var imageDef = '';
+          
+          function drawChart() {
+
+            var data = google.visualization.arrayToDataTable([
+              ['Account', 'Cost', { role: 'style' }],
+              ['Insurance', {v: 67, f: '$67'}, '#b87333', ],
+              ['Taxes', {v: 408, f: '$408'}, ''],
+              ['P & I', {v: 1122, f: '$1,122'}, ''],
+            ]);
+            
+            var options = {
+              pieSliceText: 'none',
+              pieHole: 0.6,
+              width:400,
+              height:300,
+              legend: 'none',
+              enableInteractivity: false,
+              selectionMode: 'multiple',
+              tooltip: {
+                trigger: 'selection',
+                text: 'value'
+              }
+            };
+            
+            var chart_div = document.getElementById('chart_div');
+            var chart = new google.visualization.PieChart(chart_div);
+            
+            
+            google.visualization.events.addListener(chart, 'ready', function(e) {
+                var selected_rows = [];
+                for (var i = 0; i < 4 - 1; i++) {
+                  selected_rows.push({row: i, column: null});
+                }
+                chart.setSelection(selected_rows);
+              });
+            
+            // Wait for the chart to finish drawing before calling the getImageURI() method.
+            google.visualization.events.addListener(chart, 'ready', function () {
+                imageDef = chart.getImageURI();
+              //console.log('the imageURI is: ' + imageDef);
+            });
+            
+            chart.draw(data, options);
+            
+          }
+        
+        
+        
+        
+    var genPdf = function(){
+        var docDefinition = { content: [
+            { image: imageDef, width: 300},
+            { text: "Fee Calculations"},
+            { table: {
+                headerRows: 1,
+                body: [
+                    [{text:'Estimated Payment', bold: true}, {text: '$1,596 / mo', bold: true}],
+                    ['Loan Amount', '$240,000'],
+                    ['Down Payment', '$60,000'],
+                    ['Interest Rate', '3.824%'],
+                    ['Loan Term', '30 Years'],
+                    ['Taxes & Insurance Included?', 'Yes'],
+                    ['Property Tax', '1.6% / yr'],
+                    ['Homeowner\'s Insurance', '$800 / yr'],
+                    ['Mortgage Insurance', '$0 / yr'],
+                    ['HOA Dues', '$0 / yr']
+                ]}
+            }
+            
+            ]
+        };
+        pdfMake.createPdf(docDefinition).open();
+    }
+</script>
+<a onClick="genPdf()" style="cursor: pointer;">
+    <button type="button" class="btn btn-default">
+        <i class="fa fa-file-pdf-o" style="color:red;"></i>&nbsp;View As PDF
+    </button>
+</a>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-striped table-hover"> 
+            <thead> 
+                <tr> 
+                    <th><h2>Estimated Payment</h2></th> 
+                    <th><h2>$1,596 / mo</h2></th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Loan Amount</th>
+                    <td>$240,000</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Down Payment</th>
+                    <td>$60,000</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Interest Rate</th>
+                    <td>3.824%</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Loan Term</th>
+                    <td>30 Years</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Taxes & Insurance Included?</th>
+                    <td>Yes</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Property Tax</th>
+                    <td>1.6%/yr</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Homeowner's Insurance</th>
+                    <td>$800/yr</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">Mortgage Insurance</th>
+                    <td>$0/mo</td>
+                </tr> 
+                <tr style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">HOA Dues</th>
+                    <td>$0/mo</td>
+                </tr> 
+            </tbody> 
+        </table>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <h2>Payment Breakdown</h2>
+    </div>
+</div>
+<div class="row justify-content-center">
+    <div class="col-md-4">
+        <div id='chart_div' class="googlePieChart"></div>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+
+        <table class="table table-striped table-hover"> 
+            <thead> 
+                <tr> 
+                    <th>Month</th> 
+                    <th>P & I</th> 
+                    <th>Principal</th> 
+                    <th>Interest</th> 
+                    <th>Balance</th> 
+                </tr> 
+            </thead> 
+            <tbody> 
+                <tr>
+                    <td>1</td>
+                    <td>$1,122</td>
+                    <td>$357</td>
+                    <td>$765</td>
+                    <td>$239,643</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>$1,122</td>
+                    <td>$358</td>
+                    <td>$764</td>
+                    <td>$239,285</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>$1,122</td>
+                    <td>$359</td>
+                    <td>$763</td>
+                    <td>$238,926</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>$1,122</td>
+                    <td>$360</td>
+                    <td>$761</td>
+                    <td>$238,566</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>$1,122</td>
+                    <td>$361</td>
+                    <td>$760</td>
+                    <td>$238,205</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>$1,122</td>
+                    <td>$363</td>
+                    <td>$759</td>
+                    <td>$237,842</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>$1,122</td>
+                    <td>$364</td>
+                    <td>$758</td>
+                    <td>$237,479</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>$1,122</td>
+                    <td>$365</td>
+                    <td>$757</td>
+                    <td>$237,114</td>
+                </tr>
+                <tr>
+                    <td>9</td>
+                    <td>$1,122</td>
+                    <td>$366</td>
+                    <td>$756</td>
+                    <td>$236,748</td>
+                </tr>
+                <tr>
+                    <td>10</td>
+                    <td>$1,122</td>
+                    <td>$367</td>
+                    <td>$754</td>
+                    <td>$236,381</td>
+                </tr>
+                <tr>
+                    <td>11</td>
+                    <td>$1,122</td>
+                    <td>$368</td>
+                    <td>$753</td>
+                    <td>$236,012</td>
+                </tr>
+                <tr>
+                    <td>12</td>
+                    <td>$1,122</td>
+                    <td>$369</td>
+                    <td>$752</td>
+                    <td>$235,643</td>
+                </tr>
+                <tr>
+                    <td>13</td>
+                    <td>$1,122</td>
+                    <td>$371</td>
+                    <td>$751</td>
+                    <td>$235,272</td>
+                </tr>
+                <tr>
+                    <td>14</td>
+                    <td>$1,122</td>
+                    <td>$372</td>
+                    <td>$750</td>
+                    <td>$234,900</td>
+                </tr>
+                <tr>
+                    <td>15</td>
+                    <td>$1,122</td>
+                    <td>$373</td>
+                    <td>$749</td>
+                    <td>$234,527</td>
+                </tr>
+                <tr>
+                    <td>16</td>
+                    <td>$1,122</td>
+                    <td>$374</td>
+                    <td>$747</td>
+                    <td>$234,153</td>
+                </tr>
+                <tr>
+                    <td>17</td>
+                    <td>$1,122</td>
+                    <td>$375</td>
+                    <td>$746</td>
+                    <td>$233,778</td>
+                </tr>
+                <tr>
+                    <td>18</td>
+                    <td>$1,122</td>
+                    <td>$377</td>
+                    <td>$745</td>
+                    <td>$233,401</td>
+                </tr>
+                <tr>
+                    <td>19</td>
+                    <td>$1,122</td>
+                    <td>$378</td>
+                    <td>$744</td>
+                    <td>$233,023</td>
+                </tr>
+                <tr>
+                    <td>20</td>
+                    <td>$1,122</td>
+                    <td>$379</td>
+                    <td>$743</td>
+                    <td>$232,644</td>
+                </tr>
+                <tr>
+                    <td>21</td>
+                    <td>$1,122</td>
+                    <td>$380</td>
+                    <td>$741</td>
+                    <td>$232,264</td>
+                </tr>
+                <tr>
+                    <td>22</td>
+                    <td>$1,122</td>
+                    <td>$381</td>
+                    <td>$740</td>
+                    <td>$231,883</td>
+                </tr>
+                <tr>
+                    <td>23</td>
+                    <td>$1,122</td>
+                    <td>$383</td>
+                    <td>$739</td>
+                    <td>$231,500</td>
+                </tr>
+                <tr>
+                    <td>24</td>
+                    <td>$1,122</td>
+                    <td>$384</td>
+                    <td>$738</td>
+                    <td>$231,116</td>
+                </tr>
+                
+            </tbody> 
+        </table>
+    </div>
+</div>
