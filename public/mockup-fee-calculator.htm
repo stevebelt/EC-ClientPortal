@@ -23,6 +23,7 @@
               tooltip: {
                 trigger: 'selection',
                 text: 'value',
+                textStyle: { fontName: 'verdana', fontSize: 12 }
               }
             };
             
@@ -106,7 +107,196 @@
                                   }
                               ]                            
                           ]}
-                      } // end table
+                      }, // end table
+                      { text: '', pageBreak: 'before'}, // insert a page break
+                      { table: {
+                          widths: ['*'],
+                          body: [
+                              [
+                                  {
+                                      fillColor: '#eeeeee',
+                                      text: 'AMORTIZATION SCHEDULE'
+                                  }
+                              ]                            
+                          ]}
+                      },
+                      ' ', // create some space below the Page Title
+                    { layout: "lightHorizontalLines",
+                        table: {
+                          widths: ['auto', '*', '*', '*', '*'],
+                          headerRows: 1,
+                          body: [
+                              [{text:'Month', bold: true}, {text: 'P & I', bold: true}, {text: 'Principal', bold: true}, {text: 'Interest', bold: true}, {text: 'Balance', bold: true}],
+                              [
+                                  {text:'1', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$357', fontSize: 10},
+                                  {text:'$765', fontSize: 10},
+                                  {text:'$239,643', fontSize: 10}
+                              ],
+                              [
+                                  {text:'2', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$358', fontSize: 10},
+                                  {text:'$764', fontSize: 10},
+                                  {text:'$239,285', fontSize: 10}
+                              ],
+                              [
+                                  {text:'3', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$359', fontSize: 10},
+                                  {text:'$763', fontSize: 10},
+                                  {text:'$238,926', fontSize: 10}
+                              ],
+                              [
+                                  {text:'4', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$360', fontSize: 10},
+                                  {text:'$761', fontSize: 10},
+                                  {text:'$238,566', fontSize: 10}
+                              ],
+                              [
+                                  {text:'5', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$361', fontSize: 10},
+                                  {text:'$760', fontSize: 10},
+                                  {text:'$238,205', fontSize: 10}
+                              ],
+                              [
+                                  {text:'6', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$363', fontSize: 10},
+                                  {text:'$759', fontSize: 10},
+                                  {text:'$237,842', fontSize: 10}
+                              ],
+                              [
+                                  {text:'7', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$364', fontSize: 10},
+                                  {text:'$758', fontSize: 10},
+                                  {text:'$237,479', fontSize: 10}
+                              ],
+                              [
+                                  {text:'8', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$365', fontSize: 10},
+                                  {text:'$757', fontSize: 10},
+                                  {text:'$237,114', fontSize: 10}
+                              ],
+                              [
+                                  {text:'9', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$366', fontSize: 10},
+                                  {text:'$756', fontSize: 10},
+                                  {text:'$236,748', fontSize: 10}
+                              ],
+                              [
+                                  {text:'10', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$367', fontSize: 10},
+                                  {text:'$754', fontSize: 10},
+                                  {text:'$236,381', fontSize: 10}
+                              ],
+                              [
+                                  {text:'11', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$368', fontSize: 10},
+                                  {text:'$753', fontSize: 10},
+                                  {text:'$236,012', fontSize: 10}
+                              ],
+                              [
+                                  {text:'12', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$369', fontSize: 10},
+                                  {text:'$752', fontSize: 10},
+                                  {text:'$235,643', fontSize: 10}
+                              ],
+                              [
+                                  {text:'13', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$371', fontSize: 10},
+                                  {text:'$751', fontSize: 10},
+                                  {text:'$235,272', fontSize: 10}
+                              ],
+                              [
+                                  {text:'14', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$372', fontSize: 10},
+                                  {text:'$750', fontSize: 10},
+                                  {text:'$234,900', fontSize: 10}
+                              ],
+                              [
+                                  {text:'15', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$373', fontSize: 10},
+                                  {text:'$749', fontSize: 10},
+                                  {text:'$234,527', fontSize: 10}
+                              ],
+                              [
+                                  {text:'16', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$374', fontSize: 10},
+                                  {text:'$747', fontSize: 10},
+                                  {text:'$234,153', fontSize: 10}
+                              ],
+                              [
+                                  {text:'17', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$375', fontSize: 10},
+                                  {text:'$746', fontSize: 10},
+                                  {text:'$233,778', fontSize: 10}
+                              ],
+                              [
+                                  {text:'18', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$377', fontSize: 10},
+                                  {text:'$745', fontSize: 10},
+                                  {text:'$233,401', fontSize: 10}
+                              ],
+                              [
+                                  {text:'19', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$378', fontSize: 10},
+                                  {text:'$744', fontSize: 10},
+                                  {text:'$233,023', fontSize: 10}
+                              ],
+                              [
+                                  {text:'20', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$379', fontSize: 10},
+                                  {text:'$743', fontSize: 10},
+                                  {text:'$232,644', fontSize: 10}
+                              ],
+                              [
+                                  {text:'21', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$380', fontSize: 10},
+                                  {text:'$741', fontSize: 10},
+                                  {text:'$232,264', fontSize: 10}
+                              ],
+                              [
+                                  {text:'22', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$381', fontSize: 10},
+                                  {text:'$740', fontSize: 10},
+                                  {text:'$231,883', fontSize: 10}
+                              ],
+                              [
+                                  {text:'23', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$383', fontSize: 10},
+                                  {text:'$739', fontSize: 10},
+                                  {text:'$231,500', fontSize: 10}
+                              ],
+                              [
+                                  {text:'24', fontSize: 10},
+                                  {text:'$1,122', fontSize: 10},
+                                  {text:'$384', fontSize: 10},
+                                  {text:'$738', fontSize: 10},
+                                  {text:'$231,116', fontSize: 10}
+                              ]
+                              ]}
+                      }  // end table
                 ]  // end content
         };
         pdfMake.createPdf(docDefinition).open();

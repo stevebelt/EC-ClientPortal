@@ -9,7 +9,7 @@
     <link rel="icon" href="/images/favicon.png">
 
     <title>E-Closing: Client Portal</title>
-    <link rel="SHORTCUT ICON" href="/images/eclosing.ico">
+    <link rel="SHORTCUT ICON" href="/images/eclosing_64.ico">
 
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
     
@@ -23,6 +23,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-route.js"></script>
     <script src="https://angular-ui.github.io/bootstrap/ui-bootstrap-tpls-2.5.0.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-sanitize.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-cookies.js"></script>
     <!-- Angular Material -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular-aria.min.js"></script>
@@ -41,6 +42,7 @@
     <script src="/js/vfs_fonts.js"></script>
     <!-- Our app -->
     <script src="/js/numeral.js"></script>
+    <script src="/js/authentication.module.js"></script>
     <script src="/js/zillow.module.js"></script>
     <script src="/js/xedit.module.js"></script>
     <script src="/js/angular-file-upload.min.js"></script>
@@ -58,7 +60,7 @@
         <source src="/movie/clouds.webm" type="video/webm"-->
     </video>
 </div>
-    <header currentuser="mainCntrl.currentUser"></header>
+    <header currentuser="mainCntrl.currentUser" bannercolor="{{mainCntrl.bannerColor}}"></header>
 
     <div class="container bordered-content">
         <div class="row">

@@ -46,10 +46,10 @@ body {
 .ec-header {
 	background-color: navy;
 	padding: 0px;
-	background-image: url("/images/realtor_ghost.png");
-	background-repeat: no-repeat;
-	background-size: 75%;
-	background-position: right bottom;
+	background-image: url("/images/e-closing_ghost.png");
+	/*background-repeat: no-repeat;*/
+	background-size: 25%;
+	background-position: right top;
 }
 
 .ec-header-content {

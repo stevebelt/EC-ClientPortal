@@ -4,7 +4,7 @@
 (function() {
 'use strict';
 
-var xapp = angular.module('ngXedit', ['xeditable']);
+var xapp = angular.module('sbXedit', ['xeditable']);
 xapp.controller('XeditController', XeditController);
 
 function XeditController($http, $scope, $filter){

@@ -4,7 +4,7 @@
 (function() {
 'use strict';
 
-var zapp = angular.module('ngZillow', []);
+var zapp = angular.module('sbZillow', []);
 zapp.controller('ZillowController', ZillowController);
 zapp.factory('ZillowDataFactory', ZillowDataFactory); // fetches data from Zillow
 

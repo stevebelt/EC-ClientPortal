@@ -1,7 +1,7 @@
 (function() {
 'use strict';
 
-angular.module('ngUploadDialog', ['ngMaterial', 'angularFileUpload'])
+angular.module('sbUploadDialog', ['ngMaterial', 'angularFileUpload'])
     .controller('BasicDemoCtrl', BasicDemoCtrl)
     .controller('UploadController', ['$scope', 'FileUploader', UploadController]);
 
