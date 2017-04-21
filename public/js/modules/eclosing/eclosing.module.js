@@ -50,7 +50,7 @@ function EClosingDataService($http){
     return service;
 };
 
-function EClosingController($http, $scope, EClosingDataService){
+function EClosingController($http, $scope, $location, EClosingDataService, currentValueService){
     
     this.orderByFieldname = "display-id";
     this.isReversed = false;
@@ -72,6 +72,11 @@ function EClosingController($http, $scope, EClosingDataService){
             ref.isReversed = false;
         }
     };
+    
+    this.selectFile = function(fileId, address, zipcode) {
+        currentValueService.setCurrentFile({"file._id": fileId, "address": address, "zipcode": zipcode});
+        $location.path('/details');
+    }
     
     this.getFileList = function(sessionId) {
         EClosingDataService.listFiles(sessionId, function (err, response){

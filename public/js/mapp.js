@@ -5,19 +5,19 @@
 	mapp.config(function($routeProvider) {
 	    $routeProvider
 	    .when("/datasheet", {
-	        templateUrl : "mockup-datasheet.htm"
+	        templateUrl : "/js/modules/eclosing/mockup-datasheet.htm"
 	    })
 	    .when("/messages", {
-	        templateUrl : "mockup-messages.htm"
+	        templateUrl : "/js/modules/eclosing/mockup-messages.htm"
 	    })
 	    .when("/details", {
-	    	templateUrl : "mockup-originator-details.htm"
+	    	templateUrl : "/js/modules/eclosing/mockup-originator-details.htm"
 	    })
 	    .when("/fee-calculator", {
-	        templateUrl : "mockup-fee-calculator.htm"
+	        templateUrl : "/js/modules/eclosing/mockup-fee-calculator.htm"
 	    })
 	    .when("/zillow", {
-	    	templateUrl : "mockup-zillow.htm",
+	    	templateUrl : "/js/modules/zillow/mockup-zillow.htm",
 	    	controller: "ZillowController",
 	    	controllerAs: "zillowCtrl"
 	    })
@@ -27,13 +27,13 @@
 	        controllerAs: "EditableRowCtrl"
 	    })
 	    .otherwise({
-	        templateUrl : "mockup-originator-home.htm",
+	        templateUrl : "/js/modules/eclosing/mockup-originator-home.htm",
 	        controller: "EClosingController", 
 	        controllerAs: "eclosingCtrl",
 	    });
 	});
 	
-	mapp.controller('MainController', function($scope, $location, AuthenticationService){
+	mapp.controller('MainController', function($scope, $location, AuthenticationService, currentValueService){
 	    
 		this.currentUser = {"name": "loading...", "id": 10010010 };
 		this.bannerColor = "000080";
@@ -43,6 +43,7 @@
 		}
 		var ref = this;
 		
+		// static call to Authentication Service
 		AuthenticationService.login("SID9879", (err, response) => {
 		    if(err) {
                 $scope.error = response.message;
@@ -57,6 +58,32 @@
 		
 	});
 	
+	mapp.factory("currentValueService", function(){
+	    var saveCurrentFile = {};
+	    var saveCurrentUser = {};
+	    
+	    service = {};
+	    
+	    service.setCurrentUser = function (currentUser){
+	        saveCurrentUser = currentUser;
+	    }
+	    
+	    service.getCurrentUser = function (){
+	        return saveCurrentUser;
+	    }
+	    
+	    service.setCurrentFile = function (currentFile){
+	        saveCurrentFile = currentFile;
+	    }
+	    
+	    service.getCurrentFile = function (){
+	        return saveCurrentFile;
+	    }
+	    
+	    return service;
+	    
+	});
+	
 	mapp.config(function($mdIconProvider) {
 	    $mdIconProvider
 	      .icon("zillow", "/images/zillow_logo.svg", 24);
@@ -69,7 +96,7 @@
 	        scope: { currentuser: '=', //@ reads the attribute value, = provides two-way binding, & works with functions
 	                 bannercolor: '@'
 	               },
-	        templateUrl: '/pageHeader.htm',
+	        templateUrl: '/layout/pageHeader.htm',
 	      	// controller: rankCntrlr,     //Embed a custom controller in the directive
 	      	// controllerAs: 'nameCntrl',
 	        link: function ($scope, element, attrs) { }
@@ -95,7 +122,7 @@
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
             scope: { currentuser: '=' }, //@ reads the attribute value, = provides two-way binding, & works with functions
-            templateUrl: '/datasheet.html',
+            templateUrl: '/js/modules/eclosing/datasheet.html',
             // controller: rankCntrlr,     //Embed a custom controller in the directive
             // controllerAs: 'nameCntrl',
             link: function ($scope, element, attrs) { }
@@ -106,7 +133,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-property.html',
+            templateUrl: '/js/modules/eclosing/datasheet-property.html',
             link: function ($scope, element, attrs) { } //DOM manipulation
         };
 	});
@@ -115,7 +142,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-lender.html',
+            templateUrl: '/js/modules/eclosing/datasheet-lender.html',
             link: function ($scope, element, attrs) { } //DOM manipulation
         };
 	});
@@ -124,7 +151,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-borrower.html',
+            templateUrl: '/js/modules/eclosing/datasheet-borrower.html',
             link: function ($scope, element, attrs) { } //DOM manipulation
         };
 	});
@@ -133,7 +160,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-seller.html',
+            templateUrl: '/js/modules/eclosing/datasheet-seller.html',
             link: function ($scope, element, attrs) { } //DOM manipulation
         };
 	});
@@ -142,7 +169,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-financial.html',
+            templateUrl: '/js/modules/eclosing/datasheet-financial.html',
             link: function ($scope, element, attrs) { } //DOM manipulation
         };
 	});
@@ -151,7 +178,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-payoffs.html',
+            templateUrl: '/js/modules/eclosing/datasheet-payoffs.html',
             controller: function() {
                 	this.payoffs = [
                 		{
@@ -185,7 +212,7 @@
         return {
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
-            templateUrl: '/datasheet-notes.html',
+            templateUrl: '/js/modules/eclosing/datasheet-notes.html',
             link: function ($scope, element, attrs) { } //DOM manipulation
         };
 	});

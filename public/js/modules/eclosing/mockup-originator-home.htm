@@ -11,7 +11,7 @@
                 </tr> 
             </thead> 
             <tbody> 
-                <tr ng-repeat="file in eclosingCtrl.fileList | orderBy:eclosingCtrl.orderByFieldname:eclosingCtrl.isReversed" style='cursor: pointer;' onClick='doClick("1111")'>
+                <tr ng-repeat="file in eclosingCtrl.fileList | orderBy:eclosingCtrl.orderByFieldname:eclosingCtrl.isReversed" style='cursor: pointer;' ng-click="eclosingCtrl.selectFile(file.property.zipcode, file.property.address1 + ' ' + file.property.address2, file.property.zipcode)">
                     <th scope="row">{{ file["display-id"] }}</th>
                     <td>{{ file["close-date"] | date }}</td>
                     <td>{{ file.type }}</td> 

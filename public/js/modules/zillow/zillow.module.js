@@ -28,6 +28,7 @@ function ZillowDataFactory($http){
     var factory = {};
     
     factory.getBasicInfo = function(encAddress, encCityStateZip) {
+        console.log("Using Zillow URL: /zillow/basic?address={0}&citystatezip={1}&format=json".format(encAddress, encCityStateZip));
         return $http.get("/zillow/basic?address={0}&citystatezip={1}&format=json".format(encAddress, encCityStateZip));
     }
     
@@ -38,7 +39,7 @@ function ZillowDataFactory($http){
     return factory;
 };
 
-function ZillowController($http, $scope, ZillowDataFactory){
+function ZillowController($http, $scope, ZillowDataFactory, currentValueService){
     
     this.zpid = {};
     this.zillowBasicRaw = {};
@@ -218,7 +219,11 @@ function ZillowController($http, $scope, ZillowDataFactory){
         createMarker(item, isBounce);
     };
     
-    ZillowDataFactory.getBasicInfo(encodeURIComponent("53 Fisherville Rd."), encodeURIComponent("03303")) // get basic info
+//    var address = encodeURIComponent("53 Fisherville Rd.");
+//    var cityStateZip = encodeURIComponent("03303");
+    var address = encodeURIComponent(currentValueService.getCurrentFile().address);
+    var cityStateZip = encodeURIComponent(currentValueService.getCurrentFile().zipcode);
+    ZillowDataFactory.getBasicInfo(address, cityStateZip) // get basic info
         .then( function(content) {
             handle.zillowBasicRaw = content;
             handle.extractBasics(content);

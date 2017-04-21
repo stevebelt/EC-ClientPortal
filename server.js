@@ -76,7 +76,7 @@ app.get('/zillow/basic', function (req, res) {
   var cityStateZip = req.query.citystatezip;
   var format = req.query.format;
   var zillowAPI = util.format("http://www.zillow.com/webservice/GetDeepSearchResults.htm?zws-id=%s&address=%s&citystatezip=%s", ZILLOW_API_ID, address, cityStateZip);
-  //console.log('zillowAPI: %s', zillowAPI);
+  console.log('zillowAPI: %s', zillowAPI);
   http.get(zillowAPI, (zres) => {
     const statusCode = zres.statusCode;
     const contentType = zres.headers['content-type'];
