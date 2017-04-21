@@ -9,7 +9,7 @@
 	width: auto;
 	height: auto;
 	display: block;
-	margin: 10px !important;
+	margin: 10px 30px 10px 30px !important;
 }
 
 #header-user-links {
@@ -96,11 +96,11 @@ body {
 }
 
 .ec-header .logo {
-	max-width: 180px;
-	max-height: 180px;
+	max-width: 200px;
+	max-height: 200px;
 	width: auto;
 	height: auto;
-	margin: 10px;
+	padding: 10px;
 }
 
 .nav-pills li {

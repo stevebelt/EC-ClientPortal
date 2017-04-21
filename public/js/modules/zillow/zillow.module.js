@@ -28,7 +28,6 @@ function ZillowDataFactory($http){
     var factory = {};
     
     factory.getBasicInfo = function(encAddress, encCityStateZip) {
-        console.log("Using Zillow URL: /zillow/basic?address={0}&citystatezip={1}&format=json".format(encAddress, encCityStateZip));
         return $http.get("/zillow/basic?address={0}&citystatezip={1}&format=json".format(encAddress, encCityStateZip));
     }
     
@@ -40,6 +39,8 @@ function ZillowDataFactory($http){
 };
 
 function ZillowController($http, $scope, ZillowDataFactory, currentValueService){
+    this.loading = true;
+    this.zillowError = "";
     
     this.zpid = {};
     this.zillowBasicRaw = {};
@@ -69,6 +70,14 @@ function ZillowController($http, $scope, ZillowDataFactory, currentValueService)
         handle.zillowBasic.valueChangeDays = root.zestimate[0].valueChange[0]['$'].duration;
         handle.zillowBasic.taxAssessmentYear = root.taxAssessmentYear[0];
         handle.zillowBasic.taxAssessment = formatNumber(root.taxAssessment[0]);        
+    };
+    
+    this.extractError = function( raw ){
+        let root = raw.data['SearchResults:searchresults'].message[0];
+        if (root.text && root.text[0].toUpperCase().indexOf('ERROR') >= 0)
+            return root.text[0];
+        else
+            return null;
     };
     
     this.hoverComp = function( index ) {
@@ -225,23 +234,31 @@ function ZillowController($http, $scope, ZillowDataFactory, currentValueService)
     var cityStateZip = encodeURIComponent(currentValueService.getCurrentFile().zipcode);
     ZillowDataFactory.getBasicInfo(address, cityStateZip) // get basic info
         .then( function(content) {
-            handle.zillowBasicRaw = content;
-            handle.extractBasics(content);
-            handle.zpid = content.data['SearchResults:searchresults'].response[0].results[0].result[0].zpid;
-            initMap(
-                    content.data['SearchResults:searchresults'].response[0].results[0].result[0].address[0].latitude[0],
-                    content.data['SearchResults:searchresults'].response[0].results[0].result[0].address[0].longitude[0]
-            );
-            updateMap(content.data['SearchResults:searchresults'].response[0].results[0].result[0], -1);
-            ZillowDataFactory.getDeepCompInfo( handle.zpid ) // get comps
-                .then( function(content2) {
-                    handle.zillowCompsRaw = content2;
-                    for (let i = 0; i < content2.data['Comps:comps'].response[0].properties[0].comparables[0].comp.length; i++){
-                        updateMap(content2.data['Comps:comps'].response[0].properties[0].comparables[0].comp[i], i + 1);
-                    }
-                    handle.processComps(content2);
-                    handle.setPropertyDescription();
-                });
+            let error = handle.extractError(content)
+            if (error) {
+                handle.loading = false;
+                handle.zillowError = error;
+            } else {
+                handle.zillowBasicRaw = content;
+                handle.extractBasics(content);
+                handle.zpid = content.data['SearchResults:searchresults'].response[0].results[0].result[0].zpid;
+                initMap(
+                        content.data['SearchResults:searchresults'].response[0].results[0].result[0].address[0].latitude[0],
+                        content.data['SearchResults:searchresults'].response[0].results[0].result[0].address[0].longitude[0]
+                );
+                updateMap(content.data['SearchResults:searchresults'].response[0].results[0].result[0], -1);
+                ZillowDataFactory.getDeepCompInfo( handle.zpid ) // get comps
+                    .then( function(content2) {
+                        handle.zillowCompsRaw = content2;
+                        for (let i = 0; i < content2.data['Comps:comps'].response[0].properties[0].comparables[0].comp.length; i++){
+                            updateMap(content2.data['Comps:comps'].response[0].properties[0].comparables[0].comp[i], i + 1);
+                        }
+                        handle.processComps(content2);
+                        handle.setPropertyDescription();
+                        handle.loading = false;
+                        handle.zillowError = "";
+                    });
+            }
         });
 
 };
