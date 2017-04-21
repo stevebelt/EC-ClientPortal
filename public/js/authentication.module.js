@@ -24,10 +24,9 @@
 
         var service = {};
         
-        service.login = function (username, password, callback) {
-         
-            /* Dummy authentication for testing, uses $timeout to simulate api call
-            ----------------------------------------------*/
+        /* Dummy authentication for testing, uses $timeout to simulate api call
+        ----------------------------------------------*/
+        service.mocklogin = function (sessionId, callback) {
             $timeout(function(){
                     var response = { 
                             success: true,
@@ -49,21 +48,31 @@
                             }
                         };
                     if(!response.success) {
-                        response.message = 'Username or password is incorrect';
+                        callback('Username or password is incorrect', null);
+                    } else {
+                        callback(null, response);
                     }
-                    callback(response);
                 }, 1000);
-         
-         
-            /* Use this for real authentication
-             ----------------------------------------------*/
-            //$http.post('/api/authenticate', { username: username, password: password })
-            //    .success(function (response) {
-            //        callback(response);
-            //    });
-         
         };
-
+        
+        /* Use this for real authentication
+        ----------------------------------------------*/
+        service.login = function (sessionId, callback) {
+            $http({
+                url: "/sample-data/GetCurrentUser.json", 
+                method: "GET",
+                params: {"SESSION": sessionId} 
+            })
+                .then(
+                        function (response) { // success
+                            callback(null, response);
+                        },
+                        function (err) { // failure
+                            callback(err, response);
+                        }
+                );
+        }
+         
         service.setCredentials = function (username, password) {
             var authdata = Base64.encode(username + ':' + password);
             $rootScope.globals = {

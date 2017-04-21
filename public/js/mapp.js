@@ -1,5 +1,6 @@
 (function() {
-	var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 'sbUploadDialog', 'sbZillow', 'sbXedit', 'sbAuthentication']);
+	var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 'sbUploadDialog', 
+	                                            'sbZillow', 'sbXedit', 'sbAuthentication', 'sbEClosing']);
 	
 	mapp.config(function($routeProvider) {
 	    $routeProvider
@@ -26,7 +27,9 @@
 	        controllerAs: "EditableRowCtrl"
 	    })
 	    .otherwise({
-	        templateUrl : "mockup-originator-home.htm"
+	        templateUrl : "mockup-originator-home.htm",
+	        controller: "EClosingController", 
+	        controllerAs: "eclosingCtrl",
 	    });
 	});
 	
@@ -40,15 +43,15 @@
 		}
 		var ref = this;
 		
-		AuthenticationService.login("test", "test", (response) => {
-		    if(response.success) {
-                AuthenticationService.setCredentials("test", "test");
-                ref.currentUser = {"name": response.user.displayName, "id": response.user.id };
-                ref.bannerColor = response.company.bannerColor;
-                $location.path('/');
-            } else {
+		AuthenticationService.login("SID9879", (err, response) => {
+		    if(err) {
                 $scope.error = response.message;
                 $scope.dataLoading = false;
+            } else {
+                AuthenticationService.setCredentials("test", "test");
+                ref.currentUser = {"name": response.data.response.user['display-name'], "id": response.data.response.user.id };
+                ref.bannerColor = response.data.response.company['banner-color'];
+                $location.path('/');
             }
 		});
 		

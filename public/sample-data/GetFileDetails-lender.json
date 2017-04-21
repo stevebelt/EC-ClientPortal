@@ -1,0 +1,36 @@
+{
+    "session": {
+        "status": "OK",
+        "status-message": "",
+        "session-id": "CQXIDS",
+        "session-expires-timestamp": "2012-04-23T18:25:43.511Z"
+    },
+    "response": {
+        "file": {
+            "_id": "38SBW3XUD"
+        },
+        "lender": {
+            "_id": "9879898GFD",
+            "name": "Bank of America",
+            "phone": "(999) 555-1212",
+            "fax": "",
+            "email": "lender@example.com"
+        }, 
+        "originator": {
+            "_id": "9879898GFD",
+            "name": "Juan Origiato",
+            "phone": "(888) 555-5467",
+            "fax": "(888) 555-8976",
+            "email": "juan.originator@example.com",
+            "license-number": "987889-EUS"
+        },
+        "processor": {
+            "_id": "9879898GFD",
+            "name": "Alicia Processor",
+            "phone": "(989) 555-1212",
+            "fax": "(989) 555-9874",
+            "email": "alicia.processor@example.com",
+            "license-number": "9879879-LK"
+        }
+    }
+}

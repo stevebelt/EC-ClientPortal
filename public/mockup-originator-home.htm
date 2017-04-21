@@ -1,27 +1,22 @@
-<div class="row">
+<div class="row" ng-init="eclosingCtrl.getFileList('MOCKSESSIONID')" >
     <div class="col-md-12">
         <table class="table table-striped table-hover"> 
             <caption>Click on a file to see details</caption> 
             <thead> 
                 <tr> 
-                    <th>File ID</th> 
-                    <th>Close Date</th> 
-                    <th>Loan Type</th> 
+                    <th ng-click="eclosingCtrl.clickSort('display-id')">File ID<span ng-show="eclosingCtrl.orderByFieldname === 'display-id'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th> 
+                    <th ng-click="eclosingCtrl.clickSort('close-date')">Close Date<span ng-show="eclosingCtrl.orderByFieldname === 'close-date'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th> 
+                    <th ng-click="eclosingCtrl.clickSort('type')">Loan Type<span ng-show="eclosingCtrl.orderByFieldname === 'type'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th>
                     <th>Address</th> 
                 </tr> 
             </thead> 
             <tbody> 
-                <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                    <th scope="row">2007-70</th>
-                    <td>04/01/2008</td>
-                    <td>Purchase</td> 
-                    <td>15 Warren St., Boston, MA 02101</td> 
-                </tr> 
-                <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                    <th scope="row">2007-70-C</th>
-                    <td>09/09/2007</td>
-                    <td>Second Mortgage</td> 
-                    <td>Lot 16 Block 4 PIN 39094, commonly known as 5546 Mt. Acara Drive, Boston, MA 02101</td> 
+                <tr ng-repeat="file in eclosingCtrl.fileList | orderBy:eclosingCtrl.orderByFieldname:eclosingCtrl.isReversed" style='cursor: pointer;' onClick='doClick("1111")'>
+                    <th scope="row">{{ file["display-id"] }}</th>
+                    <td>{{ file["close-date"] | date }}</td>
+                    <td>{{ file.type }}</td> 
+                    <td>{{ file.property.address1 }}, {{ file.property.address2 }}, 
+                        {{ file.property.city }}, {{ file.property.state }}, {{ file.property.zipcode }}</td> 
                 </tr> 
             </tbody> 
         </table>

@@ -1,0 +1,39 @@
+{ 
+    "session": {
+        "status": "OK",
+        "status-message": "",
+        "session-id": "CQXIDS",
+        "session-expires-timestamp": "2012-04-23T18:25:43.511Z"
+    },
+    "response": {
+        "messages": [
+            {
+                "_id": 193475,
+                "file-id": "989787",
+                "file-display-id": "2007-07-C",
+                "from-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "Please contact me regarding the closing location"
+            },
+            {
+                "_id": 193475,
+                "file-id": "8768764",
+                "file-display-id": "2007-07-C",
+                "from-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "New Info now available"
+            },
+            {
+                "_id": 193475,
+                "file-id": "1248975",
+                "file-display-id": "2007-07-C",
+                "from-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "Here is the info you requested"
+            }                                                              
+        ]
+    }
+}

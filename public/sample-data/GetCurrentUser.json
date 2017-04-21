@@ -1,0 +1,27 @@
+{
+    "session": {
+        "status": "OK",
+        "status-message": "",
+        "session-id": "CQXIDS",
+        "session-expires-timestamp": "2012-04-23T18:25:43.511Z"
+    },
+    "response": {
+        "user": {
+            "id": "193475",
+            "username": "rrabbit",
+            "password-base64": "8989dfjknukhguasdu98hjd787tsd78vg",
+            "first-name": "Roger",
+            "last-name": "Rabbit",
+            "display-name": "Roger Rabbit, Esq.",
+            "user-type": "Originator"
+        },
+        "company": {
+            "id": "96877",
+            "name": "Acme Corp",
+            "phone": "(603) 555-1983",
+            "logo-url": "/images/acmecorp_logo.png",
+            "banner-color": "#9a280c",
+            "zillow_api_id": "2343234jkjkhi9hns"
+        }
+    }
+}
