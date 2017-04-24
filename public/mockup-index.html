@@ -56,29 +56,23 @@
   </head>
 
   <body ng-app="MaterialApp" ng-controller="MainController as mainCntrl" style="background-color: transparent; height: auto;">
-<div style="position: fixed; top: 0; right: 0; bottom: 0; left: 0; overflow: hidden; z-index: -100; background-color: #e1e1e1">
-    <!-- video loop muted autoplay  style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;object-fit: fill;"> <!--  poster="img/videoframe.jpg"  -->
-        <source src="/movie/clouds.webm" type="video/webm"-->
-    </video>
-</div>
+
     <header currentuser="mainCntrl.currentUser" bannercolor="{{mainCntrl.bannerColor}}"></header>
 
     <div class="container bordered-content">
+    
         <div class="row">
+        
             <nav-pills></nav-pills>
+
             <div class="col-md-12" id="mainView">
                 <ng-view></ng-view>
             </div>
+
         </div>
-        <hr/>
-        <div class="row footer justify-content-between">
-            <div class="col-md-4">
-                <span class="text-muted">© 2017 iMarc, Inc.</span>
-            </div>
-            <div class="col-md-4 offset-md-4">
-                <span class="text-muted">Powered by <img src="/images/eclosing_logo.png" height="60px"></span>
-            </div>
-        </div>
+
+        <footer></footer>
+        
     </div>
 
     <!-- Bootstrap core JavaScript
@@ -92,4 +86,5 @@
     <script src="https://v4-alpha.getbootstrap.com/assets/js/ie10-viewport-bug-workaround.js"></script>
 
   </body>
+
 </html>

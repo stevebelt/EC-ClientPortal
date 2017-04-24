@@ -91,20 +91,28 @@
 	      .icon("zillow", "/images/zillow_logo.svg", 24);
 	});
 	
-	mapp.directive('header', function(){
-		return {
-			restrict: 'EA', //E = element, A = attribute, C = class, M = comment
-	        replace: true,
-	        scope: { currentuser: '=', //@ reads the attribute value, = provides two-way binding, & works with functions
-	                 bannercolor: '@'
-	               },
-	        templateUrl: '/layout/pageHeader.htm',
-	      	// controller: rankCntrlr,     //Embed a custom controller in the directive
-	      	// controllerAs: 'nameCntrl',
-	        link: function ($scope, element, attrs) { }
-		};
-	});
-	
+    mapp.directive('header', function(){
+        return {
+            restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+            replace: true,
+            scope: { currentuser: '=', //@ reads the attribute value, = provides two-way binding, & works with functions
+                     bannercolor: '@'
+                   },
+            templateUrl: '/layout/pageHeader.htm',
+            // controller: rankCntrlr,     //Embed a custom controller in the directive
+            // controllerAs: 'nameCntrl',
+            link: function ($scope, element, attrs) { }
+        };
+    });
+    
+    mapp.directive('footer', function(){
+        return {
+            restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+            replace: true,
+            templateUrl: '/layout/pageFooter.htm'
+        };
+    });
+    
 	mapp.directive('navPills', function(){
 	    return {
 	        restrict: 'EA', //E = element, A = attribute, C = class, M = comment
