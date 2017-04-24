@@ -1,3 +1,4 @@
+<div ng-init="eclosingCtrl.getMessages('SIDmessages', 'all')">
       <div class="row">
         <div class="col-md-12">
             <div class="info-card-blue">
@@ -6,35 +7,20 @@
                 <thead> 
                     <tr> 
                         <th>Sender</th> 
-                        <th>Received&nbsp;<i class="fa fa-sort-desc"></th> 
+                        <th>Sent&nbsp;<i class="fa fa-sort-desc"></th> 
                         <th>File</th> 
                         <th>Message</th> 
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                        <td scope="row"><i class="fa fa-envelope"></i>&nbsp;Marc Hall, Attorney</td>
-                        <td>Apr 12</td>
-                        <td>2007-70</td> 
-                        <td>I have updated the docs as you described. You...</td> 
-                    </tr> 
-                    <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                        <td scope="row"><i class="fa fa-envelope"></i>&nbsp;Marc Hall, Attorney</td>
-                        <td>Apr 12</td>
-                        <td>2007-70C</td> 
-                        <td>Thanks for the clarification. I will apply this...</td>
-                    </tr> 
-                    <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                        <td scope="row"><i class="fa fa-envelope-open-o"></i>&nbsp;Marc Hall, Attorney</td>
-                        <td>Apr 7</td>
-                        <td>2007-70</td> 
-                        <td>I have updated the docs as you described. You...</td> 
-                    </tr> 
-                    <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                        <td scope="row"><i class="fa fa-envelope-open-o"></i>&nbsp;Marc Hall, Attorney</td>
-                        <td>Apr 5</td>
-                        <td>2007-70C</td> 
-                        <td>Thanks for the clarification. I will apply this...</td>
+                    <tr ng-repeat="message in eclosingCtrl.messages.inbox | orderBy:'\u0022sent-timestamp\u0022':true" ng-click='viewMessage(message.id)'>
+                        <td scope="row">
+                            <i class="fa" ng-class="message['received-timestamp'] ? 'fa-envelope-open-o' : 'fa-envelope'"></i>
+                            &nbsp;{{ message['from-display-name'] }}
+                        </td>
+                        <td>{{ message['sent-timestamp'] | date }}</td>
+                        <td>{{ message['file-display-id'] }}</td> 
+                        <td>{{ message['subject'] }}</td> 
                     </tr> 
                 </tbody> 
                 </table>
@@ -56,17 +42,14 @@
                     </tr> 
                 </thead> 
                 <tbody> 
-                    <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                        <td scope="row"><i class="fa fa-envelope"></i>&nbsp;Marc Hall, Attorney</td>
-                        <td>Apr 2</td>
-                        <td>2007-70</td> 
-                        <td>In regards to my last message, I ...</td> 
-                    </tr> 
-                    <tr style='cursor: pointer;' onClick='doClick("1111")'>
-                        <td scope="row"><i class="fa fa-envelope-open-o"></i>&nbsp;Marc Hall, Attorney</td>
-                        <td>Apr 1</td>
-                        <td>2007-70C</td> 
-                        <td>Wanted to inform you that this cl...</td>
+                    <tr ng-repeat="message in eclosingCtrl.messages.sent | orderBy:'\u0022sent-timestamp\u0022':true" ng-click='viewMessage(message.id)'>
+                        <td scope="row">
+                            <i ng-class="message['received-timestamp'] ? 'fa fa-envelope-open-o' : 'fa fa-envelope'"></i>
+                            {{ message['recipient-display-name'] }}
+                        </td>
+                        <td>{{ message['sent-timestamp'] | date }}</td>
+                        <td>{{ message['file-display-id'] }}</td> 
+                        <td>{{ message['subject'] }}</td> 
                     </tr> 
                 </tbody> 
                 </table>
@@ -79,59 +62,33 @@
             <div class="info-card-blue">
                 <h2><i class="fa fa-comments"></i>&nbsp;Conversation</h2>
                 <!-- BEGIN Conversation -->
-    <div class="row conversation-view">
-        <div class="col-md-12">
-            <!-- FROM me begin -->
-            <div class="row justify-content-start">
-                <div class="col-md-11">
-                    <div class="popover popover-right" style="display: block; max-width: 100%; position: relative;">
-                        <h3 class="popover-title"><i class="fa fa-envelope-open-o"></i>&nbsp;Message To: Marc Hall, Attorney <span style="font-style: italic; font-size: -1;">sent March 1, 2017 11:47 am</span></h3>
-                        <div class="popover-content">
-                            <p>Hey, Marc, do you have a date when you expect this to close?</p>
+                <div class="row conversation-view">
+                    <div class="col-md-12">
+                    <!-- (all = eclosingCtrl.messages.inbox.concat(eclosingCtrl.messages.sent)) -->
+                        <div ng-repeat="message in (all = eclosingCtrl.messages.inbox.concat(eclosingCtrl.messages.sent)) | orderBy:'\u0022sent-timestamp\u0022':true" 
+                            class="row" ng-class="message['recipient-display-name'] ? 'justify-content-start' : 'justify-content-end'">
+                            <div class="col-md-11">
+                                <div class="popover" 
+                                    ng-class="message['recipient-display-name'] ? 'popover-right' : 'popover-left'"
+                                    style="display: block; max-width: 100%; position: relative;">
+                                    <h3 class="popover-title">
+                                        <i class="fa" ng-class="message['received-timestamp'] ? 'fa-envelope-open-o' : 'fa-envelope'"></i>
+                                        {{ message['file-display-id'] }}
+                                        <span ng-show="message['recipient-display-name']">&nbsp;To: {{ message['recipient-display-name'] }}</span> 
+                                        <span ng-show="message['from-display-name']">&nbsp;From: {{ message['from-display-name'] }}</span> 
+                                        <span style="font-style: italic; font-size: -1;">sent {{ message['sent-timestamp'] }}</span>
+                                    </h3>
+                                    <div class="popover-content">
+                                        <p>{{ message['subject'] }}</p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- FROM me end -->
-            <!-- TO me begin -->
-            <div class="row justify-content-end">
-                <div class="col-md-11 col-pad-1">
-                    <div class="popover popover-left" style="display: block; max-width: 100%; position: relative;">
-                        <h3 class="popover-title"><i class="fa fa-envelope-open-o"></i>&nbsp;Message From: Marc Hall, Attorney <span style="font-style: italic; font-size: -1;">sent March 1, 2017 11:58 am</span></h3>
-                        <div class="popover-content">
-                            <p>Hey, Steve, I am waiting to hear from the lender. I will let you know as soon as I hear anything</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- TO me End -->
-            <!-- TO me begin -->
-            <div class="row justify-content-end">
-                <div class="col-md-11 col-pad-1">
-                    <div class="popover popover-left" style="display: block; max-width: 100%; position: relative;">
-                        <h3 class="popover-title"><i class="fa fa-envelope-open-o"></i>&nbsp;Message From: Marc Hall, Attorney <span style="font-style: italic; font-size: -1;">sent March 3, 2017 12:58 pm</span></h3>
-                        <div class="popover-content">
-                            <p>Hey, Steve, I just heard from the lender and we are all set. I have updated E-Closing to show the closing date as April 1.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- TO me End -->
-            <!-- FROM me begin -->
-            <div class="row justify-content-start">
-                <div class="col-md-11">
-                    <div class="popover popover-right" style="display: block; max-width: 100%; position: relative;">
-                        <h3 class="popover-title"><i class="fa fa-envelope"></i>&nbsp;Message To: Marc Hall, Attorney <span style="font-style: italic; font-size: -1;">sent March 3, 2017 1:09 pm</span></h3>
-                        <div class="popover-content">
-                            <p>Thanks, Marc!</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- FROM me end -->
-        </div>
-    </div>
                 <!-- END Conversation -->
             </div>
         </div>
     </div>
+    
+</div>

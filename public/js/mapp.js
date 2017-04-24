@@ -8,7 +8,9 @@
 	        templateUrl : "/js/modules/eclosing/mockup-datasheet.htm"
 	    })
 	    .when("/messages", {
-	        templateUrl : "/js/modules/eclosing/mockup-messages.htm"
+	        templateUrl : "/js/modules/eclosing/mockup-messages.htm",
+            controller: "EClosingController", 
+            controllerAs: "eclosingCtrl",
 	    })
 	    .when("/details", {
 	    	templateUrl : "/js/modules/eclosing/mockup-details.htm"

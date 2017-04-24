@@ -1,0 +1,80 @@
+{ 
+    "session": {
+        "status": "OK",
+        "status-message": "",
+        "session-id": "CQXIDS",
+        "session-expires-timestamp": "2012-04-23T18:25:43.511Z"
+    },
+    "response": {
+        "inbox": [
+            {
+                "_id": 193475,
+                "file-id": "989787",
+                "file-display-id": "2007-07-C",
+                "from-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-29T18:25:43.511Z",
+                "received-timestamp": "",
+                "priority": "HIGH",
+                "subject": "IN Please contact me regarding the closing location",
+                "content": "I need more info on a loan they took out."
+            },
+            {
+                "_id": 193475,
+                "file-id": "8768764",
+                "file-display-id": "2007-08",
+                "from-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-25T18:25:43.511Z",
+                "received-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "IN New Info now available",
+                "content": "Here is some more info from the borrower."
+            },
+            {
+                "_id": 193475,
+                "file-id": "1248975",
+                "file-display-id": "2017-C",
+                "from-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-27T18:25:43.511Z",
+                "received-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "IN Here is the info you requested",
+                "content": "Here is a messages with \"Quoted text\" and an apostrophe ' inline"
+            }                                                              
+        ],
+        "sent": [
+            {
+                "_id": 193475,
+                "file-id": "989787",
+                "file-display-id": "2007-07-C",
+                "recipient-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-24T18:25:43.511Z",
+                "received-timestamp": "",
+                "priority": "HIGH",
+                "subject": "SENT Please contact me regarding the closing location",
+                "content": "I need more info on a loan they took out."
+            },
+            {
+                "_id": 193475,
+                "file-id": "8768764",
+                "file-display-id": "2007-08",
+                "recipient-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-26T18:25:43.511Z",
+                "received-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "SENT New Info now available",
+                "content": "Here is some more info from the borrower."
+            },
+            {
+                "_id": 193475,
+                "file-id": "1248975",
+                "file-display-id": "2017-C",
+                "recipient-display-name": "Wile E. Coyote, Genius",
+                "sent-timestamp": "2012-04-28T18:25:43.511Z",
+                "received-timestamp": "2012-04-23T18:25:43.511Z",
+                "priority": "NORMAL",
+                "subject": "SENT Here is the info you requested",
+                "content": "Here is a messages with \"Quoted text\" and an apostrophe ' inline"
+            }                                                              
+        ]
+    }
+}
