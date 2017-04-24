@@ -11,7 +11,7 @@
 	        templateUrl : "/js/modules/eclosing/mockup-messages.htm"
 	    })
 	    .when("/details", {
-	    	templateUrl : "/js/modules/eclosing/mockup-originator-details.htm"
+	    	templateUrl : "/js/modules/eclosing/mockup-details.htm"
 	    })
 	    .when("/fee-calculator", {
 	        templateUrl : "/js/modules/eclosing/mockup-fee-calculator.htm"
@@ -27,7 +27,7 @@
 	        controllerAs: "EditableRowCtrl"
 	    })
 	    .otherwise({
-	        templateUrl : "/js/modules/eclosing/mockup-originator-home.htm",
+	        templateUrl : "/js/modules/eclosing/mockup-file-list.htm",
 	        controller: "EClosingController", 
 	        controllerAs: "eclosingCtrl",
 	    });
