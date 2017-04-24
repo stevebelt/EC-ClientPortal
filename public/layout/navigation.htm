@@ -1,0 +1,10 @@
+<div class="col-md-12">
+    <ul class="nav nav-pills">
+        <li ng-class="{ active: mainCntrl.isActive('/')}" ><a href="#!/"><i class="fa fa-home"></i>&nbsp;Home</a></li>
+        <li ng-class="{ active: mainCntrl.isActive('/messages')}" ><a href="#!/messages"><i class="fa fa-envelope email-alert"></i>&nbsp;Messages</a></li>
+        <li ng-show="eclosingCtrl.hasCurrentFile()" ng-class="{ active: mainCntrl.isActive('/details')}" ><a href="#!/details"><i class="fa fa-vcard "></i>&nbsp;Details</a></li>
+        <li ng-class="{ active: mainCntrl.isActive('/datasheet')}" ><a href="#!/datasheet"><i class="fa fa-plus"></i>&nbsp;Create Order</a></li>
+        <li ng-show="eclosingCtrl.hasCurrentFile()" ng-class="{ active: mainCntrl.isActive('/fee-calculator')}" ><a href="#!/fee-calculator"><i class="fa fa-calculator"></i>&nbsp;Fee</a></li>
+        <li ng-show="eclosingCtrl.hasCurrentFile()" ng-class="{ active: mainCntrl.isActive('/zillow')}" ><a href="#!/zillow"><md-icon md-svg-icon="zillow" alt="Zillow Logo"></md-icon>&nbsp;Zillow</a></li>
+    </ul>
+</div>

@@ -56,13 +56,27 @@ function EClosingController($http, $scope, $location, EClosingDataService, curre
     this.isReversed = false;
     
     this.fileList = [];
-    this.currentFile = {
+    this.currentFile = {};
+    var ref = this;
+    
+    this.clearCurrentFile = function(){
+        this.currentFile = {
                 file: {},
                 lender: {},
                 borrower: {},
                 payoffs: {}
-            };
-    var ref = this;
+            };    
+    }
+    
+    this.initHome = function(sessionId){
+        ref.clearCurrentFile();
+        ref.getFileList(sessionId);
+    }
+    
+    this.hasCurrentFile = function (){
+        let currentFile = currentValueService.getCurrentFile();
+        return currentFile.file && currentFile.file.id;
+    }
     
     this.clickSort = function(field){
         if (field === ref.orderByFieldname){
@@ -73,12 +87,13 @@ function EClosingController($http, $scope, $location, EClosingDataService, curre
         }
     };
     
-    this.selectFile = function(fileId, address, zipcode) {
-        currentValueService.setCurrentFile({"file._id": fileId, "address": address, "zipcode": zipcode});
+    this.clickFile = function(fileId, address, zipcode) {
+        currentValueService.setCurrentFile({file: { id: "testvalue" }, "address": address, "zipcode": zipcode});
         $location.path('/details');
     }
     
     this.getFileList = function(sessionId) {
+        currentValueService.setCurrentFile({}); // clear-out the last selected file.
         EClosingDataService.listFiles(sessionId, function (err, response){
             if (err){
                 console.log("Failed to fetch file list: " + err);

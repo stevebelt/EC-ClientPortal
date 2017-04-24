@@ -103,6 +103,18 @@
 		};
 	});
 	
+	mapp.directive('navPills', function(){
+	    return {
+	        restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+	        replace: true,
+	        //scope: { currentuser: '='} //@ reads the attribute value, = provides two-way binding, & works with functions
+	        templateUrl: '/layout/navigation.htm',
+	        controller: "EClosingController",     //Embed a custom controller in the directive
+	        controllerAs: "eclosingCtrl",
+	        link: function ($scope, element, attrs) { }
+	    };
+	});
+	
 	mapp.directive('xeditTable', function(){
 	    return {
 	        restrict: 'EA', //E = element, A = attribute, C = class, M = comment
