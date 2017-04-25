@@ -1,0 +1,23 @@
+{
+    "session": {
+        "status": "OK",
+        "status-message": "",
+        "session-id": "CQXIDS",
+        "session-expires-timestamp": "2012-04-23T18:25:43.511Z"
+    },
+    "response": {
+        "file": {
+            "_id": "38SBW3XUD"
+        },
+        "closing": {
+            "timestamp": "2012-04-23T18:25:43.511Z",
+            "location": {
+                "address1": "29 Maddox Ave.",
+                "address2": "Suite 101",
+                "city": "Fairfax",
+                "state": "VA",
+                "zipcode": "22030"
+            }
+        }
+    }
+}

@@ -1,66 +1,66 @@
 
       <div class="row">
         <div class="col-md-4">
-        	<div class="info-card-brown">
-				<h2><i class="fa fa-handshake-o"></i>&nbsp;Closing Info</h2>
-				<p><strong>Closing January 3, 2017 at 11:00 am EST</strong><br/>
-				29 Maddox Ave., Suite 203, Scarsdale, NY
-				</p>
-  				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        	</div>
-		  <div class="info-card-green">
-	          <h2><i class="fa fa-gavel"></i>&nbsp;Tax Information</h2>
-	          <p><strong> Annual: $12,0023.00</strong><br/>
-	             Paid Through: January 23, 2018<br/>
-	             Next Payment: Febuary 1, 2018</p>
-	          <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-          </div>
+            <div class="info-card-brown" x-ng-init="eclosingCtrl.getDetails('SIDinfocard', 'fileId', 'closing')" >
+                <h2><i class="fa fa-handshake-o"></i> &nbsp;Closing Info</h2>
+                <p>
+                    <strong>Closing {{ eclosingCtrl.details.closing['timestamp'] | date:'medium' }}</strong><br/>
+                </p>
+                <p>
+                    {{ eclosingCtrl.details.closing.location['address1'] }}<br/>
+                    <span ng-show="eclosingCtrl.details.closing.location['address2']">{{ eclosingCtrl.details.closing.location['address2'] }}<br/></span>
+                    {{ eclosingCtrl.details.closing.location['city'] }}, 
+                    {{ eclosingCtrl.details.closing.location['state'] }} 
+                    {{ eclosingCtrl.details.closing.location['zipcode'] }}<br/>
+                </p>
+                <p><a class="btn btn-secondary" href="{{ eclosingCtrl.details.closing.location['google-maps-link'] }}" role="button">View details &raquo;</a></p>
+            </div>
+            
+            <div class="info-card-green" x-ng-init="eclosingCtrl.getDetails('SIDinfocard', 'fileId', 'taxes')" >
+                <h2><i class="fa fa-gavel"></i> &nbsp;Tax Information</h2>
+                <p>
+                    <strong>Annual {{ eclosingCtrl.details.taxes['tax'] | currency }}</strong><br/>
+                </p>
+                <p>
+                    Paid Through {{ eclosingCtrl.details.taxes['paid-through'] | date }}<br/>
+                    Next Payment is {{ eclosingCtrl.details.taxes['next-payment'] | date }}<br/>
+                </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
         </div>
-        <div class="col-md-4">
-	        <div class="info-card-blue">
-				<h2><i class="fa fa-group"></i> &nbsp;Realtors</h2>
-				<p> <strong>John Anderson</strong><br/>
-					<span style="font-style: italic;">Century 21 Realty, Inc.</span><br/>
-					2202 Main Street, Scarsdale, NY 20020
-				</p>
-				<p>
-					<i class="fa fa-envelope-o"></i> john.anderson@Century21.com<br/>
-					<i class="fa fa-phone"></i> (202) 555-1212<br/>
-				</p>
-				<hr/>
-				<p> <strong>Anju Mehngen</strong><br/>
-					<span style="font-style: italic;">Jarvis Realty, Inc.</span><br/>
-					55113 55th Street, New Your, NY 20021
-				</p>
-				<p>
-					<i class="fa fa-envelope-o"></i> amenghen@Cjarvisrealty.com<br/>
-					<i class="fa fa-phone"></i> (201) 555-3773<br/>
-				</p>
-  				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        	</div>
+        <div class="col-md-4" >
+            <div class="info-card-blue" x-ng-init="eclosingCtrl.getDetails('SIDinfocard', 'fileId', 'realtors')" >
+                <h2><i class="fa fa-group"></i> &nbsp;Realtors</h2>
+                <p x-ng-repeat="(key, realtor) in eclosingCtrl.details.realtors">
+                    <strong>{{ realtor['displayname'] }}</strong><br/>
+                    <span style="font-style: italic;">{{ realtor['company'] }}</span><br/>
+                        {{ realtor['address1'] }}<span ng-show="realtor['address2']"> {{ realtor['address2'] }}</span>,
+                        {{ realtor['city'] }}, 
+                        {{ realtor['state'] }} 
+                        {{ realtor['zipcode'] }}<br/>
+                    <i class="fa fa-envelope-o"></i>&nbsp;{{ realtor['email'] }}<br/>
+                    <i class="fa fa-phone"></i>&nbsp;{{ realtor['work-phone'] }}<br/>
+                    <hr/>
+                </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
         </div>
        
-       <div class="col-md-4">
-        	<div class="info-card-orange">
-				<h2><i class="fa fa-user"></i>&nbsp;Purchaser</h2>
-				<p> <strong>Anjan Handep</strong><br/>
-					2202 Midson Ave, Yonkers, NY 20020
-				</p>
-				<p>
-					<i class="fa fa-envelope-o"></i> anjanh221@gmail.com<br/>
-					<i class="fa fa-phone"></i> (202) 555-3766<br/>
-				</p>
-				<hr/>
-				<p> <strong>Mayuri Handep</strong><br/>
-					2202 Midson Ave, Yonkers, NY 20020
-				</p>
-				<p>
-					<i class="fa fa-envelope-o"></i> mayurih322@gmail.com<br/>
-					<i class="fa fa-phone"></i> (202) 555-3766<br/>
-				</p>
-  				<p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
-        	</div>
+       <div class="col-md-4" >
+            <div class="info-card-orange" x-ng-init="eclosingCtrl.getDetails('SIDinfocard', 'fileId', 'borrowers')" >
+                <h2><i class="fa fa-user"></i> &nbsp;Borrowers</h2>
+                <p x-ng-repeat="(key, borrower) in eclosingCtrl.details.borrowers">
+                <strong>{{ borrower['displayname'] }}</strong><br/>
+                    {{ borrower['address1'] }}<span ng-show="borrower['address2']"> {{ borrower['address2'] }}</span>, 
+                    {{ borrower['city'] }}, 
+                    {{ borrower['state'] }} 
+                    {{ borrower['zipcode'] }}<br/>
+                    <i class="fa fa-envelope-o"></i>&nbsp;{{ borrower['email'] }}<br/>
+                    <i class="fa fa-phone"></i>&nbsp;{{ borrower['work-phone'] }}<br/>
+                    <hr/>
+                </p>
+                <p><a class="btn btn-secondary" href="#" role="button">View details &raquo;</a></p>
+            </div>
         </div>
-      </div>
 	</div>
 	

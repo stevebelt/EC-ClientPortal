@@ -1,0 +1,44 @@
+{
+    "session": {
+        "status": "OK",
+        "status-message": "",
+        "session-id": "CQXIDS",
+        "session-expires-timestamp": "2012-04-23T18:25:43.511Z"
+    },
+    "response": {
+        "file": {
+            "_id": "38SBW3XUD"
+        },
+        "borrowers": [{
+                "firstname": "Anjan",
+                "lastname": "Handep",
+                "displayname": "Anjan Handep",
+                "soc-sec-num": "xxx-xx-9876",
+                "marital-status": "Married",
+                "address1": "2202 Midson Ave",
+                "address2": "",
+                "city": "Yonkers",
+                "state": "NY",
+                "zipcode": "20020",
+                "home-phone": "(440) 647-3332",
+                "work-phone": "(212) 555-9878",
+                "email": "anjanh221@gmail.com"
+            },
+            {
+                "firstname": "Mayuri",
+                "lastname": "Handep",
+                "displayname": "Mayuri Handep",
+                "soc-sec-num": "xxx-xx-1921",
+                "marital-status": "Married",
+                "address1": "2202 Midson Ave",
+                "address2": "",
+                "city": "Yonkers",
+                "state": "NY",
+                "zipcode": "20020",
+                "home-phone": "(440) 647-3332",
+                "work-phone": "(212) 555-9878",
+                "email": "mayurih322@gmail.com"
+            }
+        ]
+    }
+}

@@ -30,7 +30,7 @@ function EClosingDataService($http){
 
     service.getFileDetails = function (sessionId, fileId, section, callback) {
         $http({
-            url: "/sample-data/GetFileDetails.json", 
+            url: "/sample-data/GetFileDetails-" + section + ".json", 
             method: "GET",
             params: { 
                       "SESSION": sessionId, 
@@ -79,6 +79,8 @@ function EClosingController($http, $scope, $location, EClosingDataService, curre
     this.currentFile = {};
     
     this.messages = {};
+    
+    this.details = {};
 
     var ref = this;
 
@@ -170,9 +172,26 @@ function EClosingController($http, $scope, $location, EClosingDataService, curre
         EClosingDataService.getMessages(sessionId, mailbox, function (err, response){
             if (err){
                 console.log("Failed to fetch messages: " + err);
-                fileList = {};
+                ref.messages = {};
             } else {
                 ref.messages = response.data.response;
+            }
+        });
+    };
+    
+    /**
+     * Gets messages using the EClosingDataService.
+     * 
+     * @param sessionId - the sessionId which will be used by the API Server to identify the currently logged-in user.
+     * @param section should be: inbox | outbox | unread | all
+     */
+    this.getDetails = function (sessionId, fileId, section) {
+        EClosingDataService.getFileDetails(sessionId, fileId, section, function (err, response){
+            if (err){
+                console.log("Failed to fetch " + section + ": " + err);
+                ref.details[section] = [];
+            } else {
+                ref.details[section] = response.data.response[section];
             }
         });
     };

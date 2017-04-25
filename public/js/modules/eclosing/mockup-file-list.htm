@@ -4,9 +4,9 @@
             <caption>Click on a file to see details</caption> 
             <thead> 
                 <tr> 
-                    <th ng-click="eclosingCtrl.clickSort('display-id')">File ID<span ng-show="eclosingCtrl.orderByFieldname === 'display-id'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th> 
-                    <th ng-click="eclosingCtrl.clickSort('close-date')">Close Date<span ng-show="eclosingCtrl.orderByFieldname === 'close-date'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th> 
-                    <th ng-click="eclosingCtrl.clickSort('type')">Loan Type<span ng-show="eclosingCtrl.orderByFieldname === 'type'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th>
+                    <th ng-click="eclosingCtrl.clickSort('display-id')">File ID&nbsp;<i ng-hide="eclosingCtrl.orderByFieldname === 'display-id'" class="fa fa-sort" style="color: #c1c1c1;"></i><span ng-show="eclosingCtrl.orderByFieldname === 'display-id'"><i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th> 
+                    <th ng-click="eclosingCtrl.clickSort('close-date')">Close Date&nbsp;<i ng-hide="eclosingCtrl.orderByFieldname === 'close-date'" class="fa fa-sort" style="color: #c1c1c1;"></i><span ng-show="eclosingCtrl.orderByFieldname === 'close-date'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th> 
+                    <th ng-click="eclosingCtrl.clickSort('type')">Loan Type&nbsp;<i ng-hide="eclosingCtrl.orderByFieldname === 'type'" class="fa fa-sort" style="color: #c1c1c1;"></i><span ng-show="eclosingCtrl.orderByFieldname === 'type'">&nbsp;<i ng-show="eclosingCtrl.isReversed" class="fa fa-sort-desc"></i><i ng-show="!eclosingCtrl.isReversed" class="fa fa-sort-asc"></i></span></th>
                     <th>Address</th> 
                 </tr> 
             </thead> 
@@ -16,7 +16,8 @@
                     <th scope="row">{{ file["display-id"] }}</th>
                     <td>{{ file["close-date"] | date }}</td>
                     <td>{{ file.type }}</td> 
-                    <td>{{ file.property.address1 }}, {{ file.property.address2 }}, 
+                    <td>{{ file.property.address1 }}, 
+                        <span ng-show="{{ file.property.address2 }}">{{ file.property.address2 }},</span> 
                         {{ file.property.city }}, {{ file.property.state }}, {{ file.property.zipcode }}</td> 
                 </tr> 
             </tbody> 

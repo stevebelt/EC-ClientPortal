@@ -10,10 +10,12 @@
 	    .when("/messages", {
 	        templateUrl : "/js/modules/eclosing/mockup-messages.htm",
             controller: "EClosingController", 
-            controllerAs: "eclosingCtrl",
+            controllerAs: "eclosingCtrl"
 	    })
 	    .when("/details", {
-	    	templateUrl : "/js/modules/eclosing/mockup-details.htm"
+	    	templateUrl : "/js/modules/eclosing/mockup-details.htm",
+            controller: "EClosingController", 
+            controllerAs: "eclosingCtrl"
 	    })
 	    .when("/fee-calculator", {
 	        templateUrl : "/js/modules/eclosing/mockup-fee-calculator.htm"
@@ -122,6 +124,25 @@
 	        controller: "EClosingController",     //Embed a custom controller in the directive
 	        controllerAs: "eclosingCtrl",
 	        link: function ($scope, element, attrs) { }
+	    };
+	});
+	
+	mapp.directive('infoCard', function($compile){
+	    return {
+	        restrict: 'EA', //E = element, A = attribute, C = class, M = comment
+	        replace: true,
+	        link: function (scope, element, attrs) {
+	            var inner = element.html();
+	            var htm = '<div class="info-card-' + attrs.color + '">' +
+                            '<h2><i class="fa ' + attrs.icon + '"></i>&nbsp;' + attrs.title + '</h2>' +
+                            '<p><strong>' + attrs.heading + '</strong><br/>' +
+                                attrs.subHeading + '</p>' + 
+                                inner +
+                                (attrs.detailsHref ? '<p><a class="btn btn-secondary" href="' + attrs.detailsHref + '" role="button">View details &raquo;</a></p>': '') +
+                           '</div>';
+	            element.html(htm);
+	            $compile(element.contents())(scope);
+	        }
 	    };
 	});
 	

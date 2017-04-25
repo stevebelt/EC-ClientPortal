@@ -18,7 +18,7 @@
                             <i class="fa" ng-class="message['received-timestamp'] ? 'fa-envelope-open-o' : 'fa-envelope'"></i>
                             &nbsp;{{ message['from-display-name'] }}
                         </td>
-                        <td>{{ message['sent-timestamp'] | date }}</td>
+                        <td>{{ message['sent-timestamp'] | date:'medium' }}</td>
                         <td>{{ message['file-display-id'] }}</td> 
                         <td>{{ message['subject'] }}</td> 
                     </tr> 
@@ -47,7 +47,7 @@
                             <i ng-class="message['received-timestamp'] ? 'fa fa-envelope-open-o' : 'fa fa-envelope'"></i>
                             {{ message['recipient-display-name'] }}
                         </td>
-                        <td>{{ message['sent-timestamp'] | date }}</td>
+                        <td>{{ message['sent-timestamp'] | date:'medium' }}</td>
                         <td>{{ message['file-display-id'] }}</td> 
                         <td>{{ message['subject'] }}</td> 
                     </tr> 
@@ -76,7 +76,7 @@
                                         {{ message['file-display-id'] }}
                                         <span ng-show="message['recipient-display-name']">&nbsp;To: {{ message['recipient-display-name'] }}</span> 
                                         <span ng-show="message['from-display-name']">&nbsp;From: {{ message['from-display-name'] }}</span> 
-                                        <span style="font-style: italic; font-size: -1;">sent {{ message['sent-timestamp'] }}</span>
+                                        <span style="font-style: italic; font-size: -1;">sent {{ message['sent-timestamp'] | date:'medium' }}</span>
                                     </h3>
                                     <div class="popover-content">
                                         <p>{{ message['subject'] }}</p>
