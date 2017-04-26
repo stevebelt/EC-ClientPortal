@@ -8,9 +8,10 @@
       
             $scope.login = function () {
                 $scope.dataLoading = true;
-                AuthenticationService.Login($scope.username, $scope.password, function(response) {
-                    if(response.success) {
-                        AuthenticationService.SetCredentials($scope.username, $scope.password);
+                AuthenticationService.login($scope.username, $scope.password, function(err, response) {
+                    debugger;
+                    if(response.data.session.status === 'OK') {
+                        AuthenticationService.setCredentials($scope.username, $scope.password);
                         $location.path('/');
                     } else {
                         $scope.error = response.message;
@@ -57,7 +58,7 @@
         
         /* Use this for real authentication
         ----------------------------------------------*/
-        service.login = function (sessionId, callback) {
+        service.login = function (sessionId, password, callback) {
             $http({
                 url: "/sample-data/GetCurrentUser.json", 
                 method: "GET",

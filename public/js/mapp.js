@@ -4,6 +4,11 @@
 	
 	mapp.config(function($routeProvider) {
 	    $routeProvider
+	    .when("/login", {
+	        templateUrl : "/js/modules/authentication/login.htm",
+            controller: "LoginController", 
+            controllerAs: "loginCtrl"
+	    })
 	    .when("/datasheet", {
 	        templateUrl : "/js/modules/eclosing/mockup-datasheet.htm"
 	    })
@@ -48,7 +53,7 @@
 		var ref = this;
 		
 		// static call to Authentication Service
-		AuthenticationService.login("SID9879", (err, response) => {
+		AuthenticationService.login("SID9879", null, (err, response) => {
 		    if(err) {
                 $scope.error = response.message;
                 $scope.dataLoading = false;
