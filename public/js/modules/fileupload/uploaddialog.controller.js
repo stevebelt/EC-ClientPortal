@@ -1,38 +1,58 @@
 (function() {
 'use strict';
 
-angular.module('sbUploadDialog', ['ngMaterial', 'angularFileUpload'])
-    .controller('BasicDemoCtrl', BasicDemoCtrl)
+var dapp = angular.module('sbUploadDialog', ['ngMaterial', 'angularFileUpload'])
     .controller('UploadController', ['$scope', 'FileUploader', UploadController]);
 
-function BasicDemoCtrl($mdPanel) {
+dapp.controller('FileUploadController', FileUploadController);
+
+function FileUploadController($element, $mdPanel) {
   this._mdPanel = $mdPanel;
   this.displayText = "here is some text";
   this.disableParentScroll = false;
+  
+  var ref = this;
+  
+  // setup the drag-n-drop popover
+  var el = $element[0];
+  el.addEventListener(
+      'dragenter',
+      function(ev){
+          console.log('dragenter!');
+          ref.showDialog();
+      }
+  );
+  el.addEventListener(
+      'dragleave',
+      function(ev){
+          console.log('dragleave!');
+      }
+  );
+
+  this.showDialog = function() {
+      var position = this._mdPanel.newPanelPosition()
+          .absolute()
+          .center();
+    
+      var config = {
+        attachTo: angular.element(document.body),
+        controller: PanelDialogCtrl,
+        controllerAs: 'ctrl',
+        disableParentScroll: this.disableParentScroll,
+        templateUrl: 'upload.dialog.html',
+        hasBackdrop: true,
+        panelClass: 'upload-dialog',
+        position: position,
+        trapFocus: true,
+        zIndex: 150,
+        clickOutsideToClose: true,
+        escapeToClose: true,
+        focusOnOpen: true
+      };
+      this._mdPanel.open(config);
+    };
+
 }
-
-BasicDemoCtrl.prototype.showDialog = function() {
-  var position = this._mdPanel.newPanelPosition()
-      .absolute()
-      .center();
-
-  var config = {
-    attachTo: angular.element(document.body),
-    controller: PanelDialogCtrl,
-    controllerAs: 'ctrl',
-    disableParentScroll: this.disableParentScroll,
-    templateUrl: 'upload.dialog.html',
-    hasBackdrop: true,
-    panelClass: 'upload-dialog',
-    position: position,
-    trapFocus: true,
-    zIndex: 150,
-    clickOutsideToClose: true,
-    escapeToClose: true,
-    focusOnOpen: true
-  };
-  this._mdPanel.open(config);
-};
 
 function PanelDialogCtrl(mdPanelRef) {
   this._mdPanelRef = mdPanelRef;

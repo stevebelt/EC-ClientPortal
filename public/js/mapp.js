@@ -10,7 +10,9 @@
             controllerAs: "loginCtrl"
 	    })
 	    .when("/datasheet", {
-	        templateUrl : "/js/modules/eclosing/mockup-datasheet.htm"
+	        templateUrl : "/js/modules/eclosing/mockup-datasheet.htm",
+            controller: "EClosingController", 
+            controllerAs: "eclosingCtrl"
 	    })
 	    .when("/messages", {
 	        templateUrl : "/js/modules/eclosing/mockup-messages.htm",
