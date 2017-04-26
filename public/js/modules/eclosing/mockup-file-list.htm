@@ -17,7 +17,7 @@
                     <td>{{ file["close-date"] | date }}</td>
                     <td>{{ file.type }}</td> 
                     <td>{{ file.property.address1 }}, 
-                        <span ng-show="{{ file.property.address2 }}">{{ file.property.address2 }},</span> 
+                        <span ng-show="file.property.address2">{{ file.property.address2 }},</span> 
                         {{ file.property.city }}, {{ file.property.state }}, {{ file.property.zipcode }}</td> 
                 </tr> 
             </tbody> 
