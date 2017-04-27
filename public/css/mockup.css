@@ -15,6 +15,19 @@
 #header-user-links {
 }
 
+.shadowed-page {
+    background-color: #ffffff;
+    border: 1px solid #efefef;
+    box-shadow: 1px 1px 10px rgba(0, 0, 0, .3);
+    padding: 0px;
+}
+
+.page-content {
+    background-color: #ffffff;
+    padding: 20px;
+    margin: 0px;
+}
+
 .bordered-content {
 	background-color: #ffffff;
 	border: 1px solid #efefef;
@@ -35,10 +48,8 @@ body {
 }
 
 .footer {
-	margin-top: -4px;
-	padding-top: 20px;
-    padding-bottom: 10px;
 	background-color: #ffffff;
+	margin: 0px;
 }
 
 .footer .offset-md-4 {
@@ -46,7 +57,6 @@ body {
 }
 .ec-header {
 	background-color: navy;
-	padding: 0px;
 	background-image: url("/images/e-closing_ghost.png");
 	/*background-repeat: no-repeat;*/
 	background-size: 25%;

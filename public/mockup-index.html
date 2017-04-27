@@ -57,11 +57,13 @@
 
   <body ng-app="MaterialApp" ng-controller="MainController as mainCntrl">
 
+    <div class="container shadowed-page">
+
     <header currentuser="mainCntrl.currentUser" bannercolor="{{mainCntrl.bannerColor}}"></header>
 
-    <div class="container bordered-content">
+    <div>
     
-        <div class="row">
+        <div class="row page-content">
         
             <nav-pills></nav-pills>
 
@@ -73,6 +75,7 @@
 
         <footer></footer>
         
+    </div>
     </div>
 
     <!-- Bootstrap core JavaScript
