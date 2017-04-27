@@ -1,47 +1,47 @@
-<div ng-controller="FileUploadController as fileUploadCtrl" class="row">
+<div class="row" ng-controller="FileDialogController">
 
-<div class="col-md-2">
-<div  style="border: 2px dashed lightgrey; padding: 12px; text-align: center; color: lightgrey;">
-<h2>Drop files to upload</h2>
-or<br/>
-<button type="button" class="btn btn-default upload-dialog-open-button"
-               ng-click="fileUploadCtrl.showDialog($event)">
+    <div class="col-md-2">
+        <div  style="border: 2px dashed lightgrey; padding: 12px; text-align: center; color: lightgrey;">
+            <h2>Drop files to upload</h2>
+            or<br/>
+            <button type="button" 
+                    class="btn btn-default upload-dialog-open-button" >
                 Select Files
             </button>
-</div>
-</div>
-<div class="col-md-10">
+        </div>
+    </div>
 
-    <md-tabs md-selected="data.selectedIndex" md-dynamic-height="" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
-        <md-tab id="tabProperty">
-            <md-tab-label>Property</md-tab-label>
-            <md-tab-body><datasheet-property></datasheet-property></md-tab-body>
-        </md-tab>
-        <md-tab id="tabLender">
-            <md-tab-label>Lender</md-tab-label>
-            <md-tab-body><datasheet-lender></datasheet-lender></md-tab-body>
-        </md-tab>
-        <md-tab id="tabBorrower">
-            <md-tab-label>Borrower</md-tab-label>
-            <md-tab-body><datasheet-borrower></datasheet-borrower></md-tab-body>
-        </md-tab>
-        <md-tab id="tabSeller">
-            <md-tab-label>Seller</md-tab-label>
-            <md-tab-body><datasheet-seller></datasheet-seller></md-tab-body>
-        </md-tab>
-        <md-tab id="tabFinancial">
-            <md-tab-label>Financial</md-tab-label>
-            <md-tab-body><datasheet-financial></datasheet-financial></md-tab-body>
-        </md-tab>
-        <md-tab id="tabPayoffs">
-            <md-tab-label>Payoffs</md-tab-label>
-            <md-tab-body><datasheet-payoffs></datasheet-payoffs></md-tab-body>
-        </md-tab>
-        <md-tab id="tabNotes">
-            <md-tab-label>Notes</md-tab-label>
-            <md-tab-body><datasheet-notes></datasheet-notes></md-tab-body>
-        </md-tab>
-    </md-tabs>
-</div>
-
+    <div class="col-md-10">
+        <md-tabs md-selected="data.selectedIndex" md-dynamic-height="" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
+            <md-tab id="tabProperty">
+                <md-tab-label>Property</md-tab-label>
+                <md-tab-body><datasheet-property></datasheet-property></md-tab-body>
+            </md-tab>
+            <md-tab id="tabLender">
+                <md-tab-label>Lender</md-tab-label>
+                <md-tab-body><datasheet-lender></datasheet-lender></md-tab-body>
+            </md-tab>
+            <md-tab id="tabBorrower">
+                <md-tab-label>Borrower</md-tab-label>
+                <md-tab-body><datasheet-borrower></datasheet-borrower></md-tab-body>
+            </md-tab>
+            <md-tab id="tabSeller">
+                <md-tab-label>Seller</md-tab-label>
+                <md-tab-body><datasheet-seller></datasheet-seller></md-tab-body>
+            </md-tab>
+            <md-tab id="tabFinancial">
+                <md-tab-label>Financial</md-tab-label>
+                <md-tab-body><datasheet-financial></datasheet-financial></md-tab-body>
+            </md-tab>
+            <md-tab id="tabPayoffs">
+                <md-tab-label>Payoffs</md-tab-label>
+                <md-tab-body><datasheet-payoffs></datasheet-payoffs></md-tab-body>
+            </md-tab>
+            <md-tab id="tabNotes">
+                <md-tab-label>Notes</md-tab-label>
+                <md-tab-body><datasheet-notes></datasheet-notes></md-tab-body>
+            </md-tab>
+        </md-tabs>
+    </div>
+    
 </div>

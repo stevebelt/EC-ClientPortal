@@ -1,70 +1,121 @@
+/**
+ * 
+ */
 (function() {
 'use strict';
 
-var dapp = angular.module('sbUploadDialog', ['ngMaterial', 'angularFileUpload'])
-    .controller('UploadController', ['$scope', 'FileUploader', UploadController]);
+var fapp = angular.module('sbUploadDialog', ['ngMaterial', 'angularFileUpload']);
+fapp.controller('FileDialogController', ['$element', '$mdPanel', FileDialogController]);
+fapp.controller('UploadController', ['$scope', 'FileUploader', UploadController]);
 
-dapp.controller('FileUploadController', FileUploadController);
-
-function FileUploadController($element, $mdPanel) {
-  this._mdPanel = $mdPanel;
-  this.displayText = "here is some text";
-  this.disableParentScroll = false;
+function FileDialogController( $element, $mdPanel) {
+    this._mdPanel = $mdPanel;
+    this.displayText = "here is some text";
+    this.disableParentScroll = false;
   
-  var ref = this;
+    var ref = this;
   
-  // setup the drag-n-drop popover
-  var el = $element[0];
-  el.addEventListener(
-      'dragenter',
-      function(ev){
-          console.log('dragenter!');
-          ref.showDialog();
-      }
-  );
-  el.addEventListener(
-      'dragleave',
-      function(ev){
-          console.log('dragleave!');
-      }
-  );
+    // setup the drag-n-drop popover
+    var el = $element[0];
+    el.addEventListener(
+        'dragenter',
+        function(ev) {
+            console.log('dragenter!');
+            ref.showDialog();
+        }
+    );
+    el.addEventListener(
+        'dragleave',
+        function(ev){
+            console.log('dragleave!');
+        }
+    );
 
-  this.showDialog = function() {
-      var position = this._mdPanel.newPanelPosition()
-          .absolute()
-          .center();
+    this.showDialog = function() {
+        var position = ref._mdPanel.newPanelPosition()
+            .absolute()
+            .center();
     
-      var config = {
-        attachTo: angular.element(document.body),
-        controller: PanelDialogCtrl,
-        controllerAs: 'ctrl',
-        disableParentScroll: this.disableParentScroll,
-        templateUrl: '/js/modules/fileupload/upload.dialog.htm',
-        hasBackdrop: true,
-        panelClass: 'upload-dialog',
-        position: position,
-        trapFocus: true,
-        zIndex: 150,
-        clickOutsideToClose: true,
-        escapeToClose: true,
-        focusOnOpen: true
-      };
-      this._mdPanel.open(config);
+        var config = {
+            attachTo: angular.element(document.body),
+            controller: PanelDialogCtrl,
+            controllerAs: 'ctrl',
+            disableParentScroll: ref.disableParentScroll,
+            templateUrl: '/js/modules/fileupload/upload.dialog.htm',
+            hasBackdrop: true,
+            panelClass: 'upload-dialog',
+            position: position,
+            trapFocus: true,
+            zIndex: 150,
+            clickOutsideToClose: true,
+            escapeToClose: true,
+            focusOnOpen: true
+        };
+        ref._mdPanel.open(config);
     };
+    // Need to add the onClick behavior back to the 'Select Files' button.
+    $(el).find('button').click(this.showDialog);
 
-}
+};
+
+/*function FileUploadController($element, $mdPanel) {
+    this._mdPanel = $mdPanel;
+    this.displayText = "here is some text";
+    this.disableParentScroll = false;
+  
+    var ref = this;
+  
+    // setup the drag-n-drop popover
+    var el = $element[0];
+    el.addEventListener(
+        'dragenter',
+        function(ev) {
+            console.log('dragenter!');
+            ref.showDialog();
+        }
+    );
+    el.addEventListener(
+        'dragleave',
+        function(ev){
+            console.log('dragleave!');
+        }
+    );
+
+    this.showDialog = function() {
+        var position = this._mdPanel.newPanelPosition()
+            .absolute()
+            .center();
+    
+        var config = {
+            attachTo: angular.element(document.body),
+            controller: PanelDialogCtrl,
+            controllerAs: 'ctrl',
+            disableParentScroll: this.disableParentScroll,
+            templateUrl: '/js/modules/fileupload/upload.dialog.htm',
+            hasBackdrop: true,
+            panelClass: 'upload-dialog',
+            position: position,
+            trapFocus: true,
+            zIndex: 150,
+            clickOutsideToClose: true,
+            escapeToClose: true,
+            focusOnOpen: true
+        };
+        this._mdPanel.open(config);
+    };
+}*/
 
 function PanelDialogCtrl(mdPanelRef) {
-  this._mdPanelRef = mdPanelRef;
+    this._mdPanelRef = mdPanelRef;
 }
 
 PanelDialogCtrl.prototype.closeDialog = function() {
-  var panelRef = this._mdPanelRef;
+    var panelRef = this._mdPanelRef;
 
-  panelRef && panelRef.close().then(function() {
-    angular.element(document.querySelector('.dialog-open-button')).focus();
-    panelRef.destroy();
-  });
+    panelRef && panelRef.close().then(function() {
+        angular.element(document.querySelector('.dialog-open-button')).focus();
+        panelRef.destroy();
+    });
 };
 
 function UploadController($scope, FileUploader) {

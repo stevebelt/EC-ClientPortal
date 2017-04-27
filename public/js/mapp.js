@@ -1,6 +1,7 @@
 (function() {
-	var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 'sbUploadDialog', 
-	                                            'sbZillow', 'sbXedit', 'sbAuthentication', 'sbEClosing']);
+	var mapp = angular.module('MaterialApp', ['ngRoute','ngAria', 'ngAnimate', 'ngMaterial', 'ngSanitize', 
+	                                            'sbUploadDialog', 'sbZillow', 'sbXedit', 'sbAuthentication', 
+	                                            'sbEClosing']);
 	
 	mapp.config(function($routeProvider) {
 	    $routeProvider
@@ -50,7 +51,7 @@
 		this.bannerColor = "000080";
 		
 		this.showNavigation = function(){
-		    console.log("path is: '" + $location.path() + "': " + ($location.path() === "/login"));
+		    //console.log("path is: '" + $location.path() + "': " + ($location.path() === "/login"));
 		    return $location.path() !== "/login";
 		}
 		
