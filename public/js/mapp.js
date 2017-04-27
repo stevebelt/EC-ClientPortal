@@ -49,8 +49,13 @@
 		this.currentUser = {"name": "loading...", "id": 10010010 };
 		this.bannerColor = "000080";
 		
+		this.showNavigation = function(){
+		    console.log("path is: '" + $location.path() + "': " + ($location.path() === "/login"));
+		    return $location.path() !== "/login";
+		}
+		
 		this.isActive = function( viewLocation ){
-            return viewLocation === $location.path();
+		    return viewLocation === $location.path();
 		}
 		var ref = this;
 		

@@ -12,8 +12,8 @@
     nv-file-over="" >
 
     <style>
-        .my-drop-zone { border: dashed 6px lightgray; }
-        .nv-file-over { border: dashed 6px green; } /* Default class applied to drop zones on over */
+        .my-drop-zone { border: dashed 3px lightgray; }
+        .nv-file-over { border: dashed 3px green; } /* Default class applied to drop zones on over */
     </style>
 
     <md-toolbar>
@@ -28,9 +28,10 @@
             <div class="well" style="margin-bottom: 30px" >
         
                 <h3>Upload queue</h3>
-                <p>Multiple
-                <input type="file" nv-file-select="" uploader="uploader" multiple  /></p>
-                <p>Queue length: {{ uploader.queue.length }}</p>
+                <p>
+                    <input type="file" nv-file-select="" uploader="uploader" multiple  />
+                </p>
+                <p>Number of files to be uploaded: {{ uploader.queue.length }}</p>
         
                 <table class="table">
                     <thead>
@@ -92,10 +93,10 @@
         </div>
     </div>
 
-  <div layout="row" class="dialog-button">
-    <md-button md-autofocus class="md-primary" ng-click="ctrl.closeDialog()">
+  <div class="row">
+    <button type="button" class="btn btn-default" ng-click="ctrl.closeDialog()">
       Close
-    </md-button>
+    </button>
   </div>
   
 </div>

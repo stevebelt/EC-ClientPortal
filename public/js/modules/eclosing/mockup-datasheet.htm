@@ -1,4 +1,16 @@
-<div ng-controller="FileUploadController">
+<div ng-controller="FileUploadController as fileUploadCtrl" class="row">
+
+<div class="col-md-2">
+<div  style="border: 2px dashed lightgrey; padding: 12px; text-align: center; color: lightgrey;">
+<h2>Drop files to upload</h2>
+or<br/>
+<button type="button" class="btn btn-default upload-dialog-open-button"
+               ng-click="fileUploadCtrl.showDialog($event)">
+                Select Files
+            </button>
+</div>
+</div>
+<div class="col-md-10">
 
     <md-tabs md-selected="data.selectedIndex" md-dynamic-height="" md-align-tabs="{{data.bottom ? 'bottom' : 'top'}}">
         <md-tab id="tabProperty">
@@ -30,5 +42,6 @@
             <md-tab-body><datasheet-notes></datasheet-notes></md-tab-body>
         </md-tab>
     </md-tabs>
+</div>
 
 </div>

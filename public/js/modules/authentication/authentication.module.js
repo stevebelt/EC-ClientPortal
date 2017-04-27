@@ -9,7 +9,6 @@
             $scope.login = function () {
                 $scope.dataLoading = true;
                 AuthenticationService.login($scope.username, $scope.password, function(err, response) {
-                    debugger;
                     if(response.data.session.status === 'OK') {
                         AuthenticationService.setCredentials($scope.username, $scope.password);
                         $location.path('/');

@@ -39,7 +39,7 @@ function FileUploadController($element, $mdPanel) {
         controller: PanelDialogCtrl,
         controllerAs: 'ctrl',
         disableParentScroll: this.disableParentScroll,
-        templateUrl: 'upload.dialog.html',
+        templateUrl: '/js/modules/fileupload/upload.dialog.htm',
         hasBackdrop: true,
         panelClass: 'upload-dialog',
         position: position,
