@@ -47,8 +47,9 @@
 	
 	mapp.controller('MainController', function($scope, $location, AuthenticationService, currentValueService){
 	    
-		this.currentUser = {"name": "loading...", "id": 10010010 };
-		this.bannerColor = "000080";
+        this.currentUser = {"name": "loading...", "id": -1 };
+        this.bannerLogo = "/images/clientportal_logo.png";
+        this.bannerColor = "#262626";		
 		
 		this.showNavigation = function(){
 		    //console.log("path is: '" + $location.path() + "': " + ($location.path() === "/login"));
@@ -60,18 +61,22 @@
 		}
 		var ref = this;
 		
-		// static call to Authentication Service
-		AuthenticationService.login("SID9879", null, (err, response) => {
-		    if(err) {
-                $scope.error = response.message;
-                $scope.dataLoading = false;
-            } else {
-                AuthenticationService.setCredentials("test", "test");
-                ref.currentUser = {"name": response.data.response.user['display-name'], "id": response.data.response.user.id };
-                ref.bannerColor = response.data.response.company['banner-color'];
-                $location.path('/');
-            }
-		});
+        this.initSession = function(authToken) {
+            AuthenticationService.login(authToken, null, (err, response) => {
+                if(err) {
+                    $scope.error = response.message;
+                    $scope.dataLoading = false;
+                } else {
+                    AuthenticationService.setCredentials(authToken, "auto-login");
+                    ref.currentUser = {"name": response.data.response.user['display-name'], "id": response.data.response.user.id };
+                    if (response.data.response.company['banner-color'])
+                        ref.bannerColor = response.data.response.company['banner-color'];
+                    if (response.data.response.company['logo-url'])
+                        ref.bannerLogo = response.data.response.company['logo-url'];
+                    $location.path('/');
+                }
+            });
+        };
 		
 	});
 	
@@ -111,8 +116,9 @@
             restrict: 'EA', //E = element, A = attribute, C = class, M = comment
             replace: true,
             scope: { currentuser: '=', //@ reads the attribute value, = provides two-way binding, & works with functions
-                     bannercolor: '@'
-                   },
+                bannercolor: '@',
+                bannerlogo: '@'
+              },
             templateUrl: '/layout/pageHeader.htm',
             // controller: rankCntrlr,     //Embed a custom controller in the directive
             // controllerAs: 'nameCntrl',

@@ -57,9 +57,9 @@
 
   <body ng-app="MaterialApp" ng-controller="MainController as mainCntrl">
 
-    <div class="container shadowed-page">
+    <div class="container shadowed-page" ng-init="mainCntrl.initSession('{session_id}')" ng-cloak>
 
-    <header currentuser="mainCntrl.currentUser" bannercolor="{{mainCntrl.bannerColor}}"></header>
+    <header currentuser="mainCntrl.currentUser" bannercolor="{{mainCntrl.bannerColor}}" bannerlogo="{{mainCntrl.bannerLogo}}"></header>
 
     <div>
     

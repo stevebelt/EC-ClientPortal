@@ -1,5 +1,5 @@
 .navbar-default {
-	background-color: navy;
+	background-color: #262626;
 	justify-content: space-between;
 }
 
@@ -43,7 +43,7 @@ html {
 body {
 	/* Margin bottom by footer height */
 	padding-bottom: 60px;
-	background-color: #e1e1e1;
+	background-color: #d9dcdf;
 	height: auto;
 }
 
@@ -56,7 +56,7 @@ body {
 	text-align: right;
 }
 .ec-header {
-	background-color: navy;
+	background-color: #262626;
 	background-image: url("/images/e-closing_ghost.png");
 	/*background-repeat: no-repeat;*/
 	background-size: 25%;
@@ -68,9 +68,10 @@ body {
 
 #ecHeaderLinksMd {
 	background-color: #e1e1e1 !important;
-	color: navy;
+	color: #355C82;
 	border: none;
 	margin-bottom: 0px;
+	min-height: inherit;
 }
 
 @media (min-width: 992px){
@@ -84,7 +85,7 @@ body {
 
 #ecHeaderLinksXs {
 	background-color: #e1e1e1 !important;
-	color: navy;
+	color: #355C82;
 	border: none;
 	margin-top: 0px;
 	margin-right: 20px;
@@ -93,17 +94,17 @@ body {
 }
 
 #ecHeaderLinksMd a, #ecHeaderLinksXs a {
-	color: navy;
+	color: #355C82;
 	padding: 0px 4px 0px 0px;
 }
 
 #ecHeaderLinksMd a.dropdown-item, #ecHeaderLinksXs a.dropdown-item {
-	color: navy;
+	color: #355C82;
 	padding: 10px 10px 10px 10px;
 }
 
 #ecHeaderLinksMd a:hover, #ecHeaderLinksXs a:hover {
-	color: orange;
+	color: #8bd155;
 }
 
 .ec-header .logo {
@@ -119,7 +120,7 @@ body {
 }
 
 .email-alert {
-	color: orange;
+	color: #8bd155;
 	-webkit-animation: pulsate 2s ease-out;
 	-webkit-animation-iteration-count: infinite; 
 	opacity: 0.0;
@@ -214,7 +215,29 @@ table caption {
 
 md-tabs-content-wrapper {
 	padding:20px; 
-	background-color: #eeeeee;
+	background-color: #f1f1f1;
 	border-radius: 6px;
 	height: 100%
+}
+
+.page-content .nav-pills>li.active>a {
+    background-color: #355c82;
+    color: #ffffff;
+}
+
+.page-content .nav-pills>li>a {
+    color: #355c82;
+}
+
+#fileupload md-toolbar:not(.md-menu-toolbar){
+    background-color: #355c82;
+}
+
+.page-content md-tabs .md-tab.md-active {
+	color: #355c82;
+}
+
+.page-content md-tabs md-ink-bar {
+    color: #8bd155;
+    background: #8bd155;
 }
